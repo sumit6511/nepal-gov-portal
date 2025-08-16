@@ -28,29 +28,29 @@ export default function Index() {
       icon: <FileText className="h-8 w-8" />,
       title: "Government Services",
       description:
-        "Apply for documents, permits, and licenses online with instant processing.",
+        "Apply for citizenship, passports, and permits online through Nepal government portal.",
       href: "/government",
       features: [
-        "Digital Certificates",
-        "License Renewal",
-        "Permit Applications",
+        "Citizenship Certificate",
+        "Passport Services",
+        "Business Registration",
       ],
     },
     {
       icon: <CreditCard className="h-8 w-8" />,
-      title: "Payment Services",
+      title: "Bill Payment Services",
       description:
-        "Pay bills, taxes, and fees securely through our integrated payment system.",
+        "Pay electricity, water, internet bills and government fees securely in NPR.",
       href: "/payments",
-      features: ["Utility Bills", "Tax Payments", "Government Fees"],
+      features: ["NEA Electricity Bills", "Tax Payments", "Municipal Fees"],
     },
     {
       icon: <Heart className="h-8 w-8" />,
-      title: "Medical Claims",
+      title: "Health Insurance",
       description:
-        "Submit and track medical insurance claims with AI-powered processing.",
+        "Submit and track health insurance claims through Nepal's social security system.",
       href: "/medical",
-      features: ["Claim Submission", "Status Tracking", "Digital Records"],
+      features: ["SSF Health Claims", "Medical Reimbursement", "Digital Health Records"],
     },
     {
       icon: <BarChart3 className="h-8 w-8" />,

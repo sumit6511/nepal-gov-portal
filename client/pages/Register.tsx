@@ -281,7 +281,7 @@ export default function Register() {
               <Label htmlFor="address">Street Address</Label>
               <Input
                 id="address"
-                placeholder="123 Main Street"
+                placeholder="Street Address, Ward No."
                 value={formData.address}
                 onChange={(e) => handleInputChange("address", e.target.value)}
                 className={errors.address ? "border-destructive" : ""}
@@ -299,7 +299,7 @@ export default function Register() {
                 <Label htmlFor="city">City</Label>
                 <Input
                   id="city"
-                  placeholder="New York"
+                  placeholder="Kathmandu"
                   value={formData.city}
                   onChange={(e) => handleInputChange("city", e.target.value)}
                   className={errors.city ? "border-destructive" : ""}
@@ -312,7 +312,7 @@ export default function Register() {
                 )}
               </div>
               <div className="space-y-2">
-                <Label htmlFor="state">State</Label>
+                <Label htmlFor="state">Province</Label>
                 <Select
                   value={formData.state}
                   onValueChange={(value) => handleInputChange("state", value)}
@@ -320,14 +320,16 @@ export default function Register() {
                   <SelectTrigger
                     className={errors.state ? "border-destructive" : ""}
                   >
-                    <SelectValue placeholder="Select state" />
+                    <SelectValue placeholder="Select province" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="NY">New York</SelectItem>
-                    <SelectItem value="CA">California</SelectItem>
-                    <SelectItem value="TX">Texas</SelectItem>
-                    <SelectItem value="FL">Florida</SelectItem>
-                    <SelectItem value="IL">Illinois</SelectItem>
+                    <SelectItem value="Province1">Province No. 1</SelectItem>
+                    <SelectItem value="Madhesh">Madhesh Pradesh</SelectItem>
+                    <SelectItem value="Bagmati">Bagmati Pradesh</SelectItem>
+                    <SelectItem value="Gandaki">Gandaki Pradesh</SelectItem>
+                    <SelectItem value="Lumbini">Lumbini Pradesh</SelectItem>
+                    <SelectItem value="Karnali">Karnali Pradesh</SelectItem>
+                    <SelectItem value="Sudurpashchim">Sudurpashchim Pradesh</SelectItem>
                   </SelectContent>
                 </Select>
                 {errors.state && (
@@ -340,10 +342,10 @@ export default function Register() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="zipCode">ZIP Code</Label>
+              <Label htmlFor="zipCode">Postal Code</Label>
               <Input
                 id="zipCode"
-                placeholder="12345"
+                placeholder="44600"
                 value={formData.zipCode}
                 onChange={(e) => handleInputChange("zipCode", e.target.value)}
                 className={errors.zipCode ? "border-destructive" : ""}

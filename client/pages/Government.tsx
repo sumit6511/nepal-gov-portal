@@ -1,30 +1,42 @@
-import { useState } from 'react';
-import { Layout } from '@/components/Layout';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Checkbox } from '@/components/ui/checkbox';
-import { Alert, AlertDescription } from '@/components/ui/alert';
-import { Badge } from '@/components/ui/badge';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Progress } from '@/components/ui/progress';
-import { 
-  FileText, 
-  Upload, 
-  UserCheck, 
-  IdCard, 
-  Building, 
-  AlertCircle, 
-  CheckCircle, 
+import { useState } from "react";
+import { Layout } from "@/components/Layout";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Badge } from "@/components/ui/badge";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Progress } from "@/components/ui/progress";
+import {
+  FileText,
+  Upload,
+  UserCheck,
+  IdCard,
+  Building,
+  AlertCircle,
+  CheckCircle,
   Clock,
   Shield,
   X,
   Plus,
-  Download
-} from 'lucide-react';
+  Download,
+} from "lucide-react";
 
 interface FileUpload {
   id: string;
@@ -35,112 +47,212 @@ interface FileUpload {
 }
 
 export default function Government() {
-  const [activeTab, setActiveTab] = useState('citizenship');
+  const [activeTab, setActiveTab] = useState("citizenship");
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "success" | "error"
+  >("idle");
 
   // Citizenship Certificate Form State
   const [citizenshipForm, setCitizenshipForm] = useState({
-    applicationType: '',
-    fullName: '',
-    fatherName: '',
-    motherName: '',
-    grandfatherName: '',
-    dateOfBirth: '',
-    placeOfBirth: '',
-    permanentAddress: '',
-    temporaryAddress: '',
-    contactNumber: '',
-    email: '',
-    maritalStatus: '',
-    occupation: '',
-    previousCitizenshipNumber: ''
+    applicationType: "",
+    fullName: "",
+    fatherName: "",
+    motherName: "",
+    grandfatherName: "",
+    dateOfBirth: "",
+    placeOfBirth: "",
+    permanentAddress: "",
+    temporaryAddress: "",
+    contactNumber: "",
+    email: "",
+    maritalStatus: "",
+    occupation: "",
+    previousCitizenshipNumber: "",
   });
 
   const [citizenshipFiles, setCitizenshipFiles] = useState<FileUpload[]>([
-    { id: 'birth_certificate', name: 'Birth Certificate', file: null, required: true, uploaded: false },
-    { id: 'father_citizenship', name: "Father's Citizenship", file: null, required: true, uploaded: false },
-    { id: 'mother_citizenship', name: "Mother's Citizenship", file: null, required: true, uploaded: false },
-    { id: 'passport_photo', name: 'Passport Size Photo', file: null, required: true, uploaded: false },
-    { id: 'marriage_certificate', name: 'Marriage Certificate (if applicable)', file: null, required: false, uploaded: false }
+    {
+      id: "birth_certificate",
+      name: "Birth Certificate",
+      file: null,
+      required: true,
+      uploaded: false,
+    },
+    {
+      id: "father_citizenship",
+      name: "Father's Citizenship",
+      file: null,
+      required: true,
+      uploaded: false,
+    },
+    {
+      id: "mother_citizenship",
+      name: "Mother's Citizenship",
+      file: null,
+      required: true,
+      uploaded: false,
+    },
+    {
+      id: "passport_photo",
+      name: "Passport Size Photo",
+      file: null,
+      required: true,
+      uploaded: false,
+    },
+    {
+      id: "marriage_certificate",
+      name: "Marriage Certificate (if applicable)",
+      file: null,
+      required: false,
+      uploaded: false,
+    },
   ]);
 
   // Passport Form State
   const [passportForm, setPassportForm] = useState({
-    applicationType: '',
-    serviceType: '',
-    fullName: '',
-    dateOfBirth: '',
-    placeOfBirth: '',
-    citizenshipNumber: '',
-    fatherName: '',
-    motherName: '',
-    permanentAddress: '',
-    contactNumber: '',
-    email: '',
-    emergencyContactName: '',
-    emergencyContactNumber: '',
-    previousPassportNumber: '',
-    passportOffice: ''
+    applicationType: "",
+    serviceType: "",
+    fullName: "",
+    dateOfBirth: "",
+    placeOfBirth: "",
+    citizenshipNumber: "",
+    fatherName: "",
+    motherName: "",
+    permanentAddress: "",
+    contactNumber: "",
+    email: "",
+    emergencyContactName: "",
+    emergencyContactNumber: "",
+    previousPassportNumber: "",
+    passportOffice: "",
   });
 
   const [passportFiles, setPassportFiles] = useState<FileUpload[]>([
-    { id: 'citizenship_copy', name: 'Citizenship Certificate Copy', file: null, required: true, uploaded: false },
-    { id: 'passport_photo', name: 'Passport Size Photo (2 copies)', file: null, required: true, uploaded: false },
-    { id: 'old_passport', name: 'Old Passport (for renewal)', file: null, required: false, uploaded: false },
-    { id: 'recommendation_letter', name: 'Recommendation Letter', file: null, required: false, uploaded: false }
+    {
+      id: "citizenship_copy",
+      name: "Citizenship Certificate Copy",
+      file: null,
+      required: true,
+      uploaded: false,
+    },
+    {
+      id: "passport_photo",
+      name: "Passport Size Photo (2 copies)",
+      file: null,
+      required: true,
+      uploaded: false,
+    },
+    {
+      id: "old_passport",
+      name: "Old Passport (for renewal)",
+      file: null,
+      required: false,
+      uploaded: false,
+    },
+    {
+      id: "recommendation_letter",
+      name: "Recommendation Letter",
+      file: null,
+      required: false,
+      uploaded: false,
+    },
   ]);
 
   // Business Registration Form State
   const [businessForm, setBusinessForm] = useState({
-    businessType: '',
-    businessName: '',
-    businessNameNepali: '',
-    businessAddress: '',
-    ownerName: '',
-    ownerCitizenship: '',
-    contactNumber: '',
-    email: '',
-    capital: '',
-    numberOfEmployees: '',
-    businessCategory: '',
-    businessDescription: '',
-    panNumber: ''
+    businessType: "",
+    businessName: "",
+    businessNameNepali: "",
+    businessAddress: "",
+    ownerName: "",
+    ownerCitizenship: "",
+    contactNumber: "",
+    email: "",
+    capital: "",
+    numberOfEmployees: "",
+    businessCategory: "",
+    businessDescription: "",
+    panNumber: "",
   });
 
   const [businessFiles, setBusinessFiles] = useState<FileUpload[]>([
-    { id: 'owner_citizenship', name: "Owner's Citizenship Certificate", file: null, required: true, uploaded: false },
-    { id: 'passport_photo', name: 'Passport Size Photo', file: null, required: true, uploaded: false },
-    { id: 'business_plan', name: 'Business Plan', file: null, required: true, uploaded: false },
-    { id: 'office_rental', name: 'Office Rental Agreement', file: null, required: false, uploaded: false },
-    { id: 'pan_certificate', name: 'PAN Certificate', file: null, required: false, uploaded: false }
+    {
+      id: "owner_citizenship",
+      name: "Owner's Citizenship Certificate",
+      file: null,
+      required: true,
+      uploaded: false,
+    },
+    {
+      id: "passport_photo",
+      name: "Passport Size Photo",
+      file: null,
+      required: true,
+      uploaded: false,
+    },
+    {
+      id: "business_plan",
+      name: "Business Plan",
+      file: null,
+      required: true,
+      uploaded: false,
+    },
+    {
+      id: "office_rental",
+      name: "Office Rental Agreement",
+      file: null,
+      required: false,
+      uploaded: false,
+    },
+    {
+      id: "pan_certificate",
+      name: "PAN Certificate",
+      file: null,
+      required: false,
+      uploaded: false,
+    },
   ]);
 
   const [errors, setErrors] = useState<Record<string, string>>({});
 
-  const handleFileUpload = (fileArray: FileUpload[], setFileArray: React.Dispatch<React.SetStateAction<FileUpload[]>>, fileId: string, file: File | null) => {
-    setFileArray(prev => prev.map(item => 
-      item.id === fileId 
-        ? { ...item, file, uploaded: !!file }
-        : item
-    ));
+  const handleFileUpload = (
+    fileArray: FileUpload[],
+    setFileArray: React.Dispatch<React.SetStateAction<FileUpload[]>>,
+    fileId: string,
+    file: File | null,
+  ) => {
+    setFileArray((prev) =>
+      prev.map((item) =>
+        item.id === fileId ? { ...item, file, uploaded: !!file } : item,
+      ),
+    );
   };
 
-  const validateForm = (formType: string, formData: any, files: FileUpload[]) => {
+  const validateForm = (
+    formType: string,
+    formData: any,
+    files: FileUpload[],
+  ) => {
     const newErrors: Record<string, string> = {};
 
     // Check required fields based on form type
-    if (formType === 'citizenship') {
-      if (!formData.applicationType) newErrors.applicationType = 'Application type is required';
-      if (!formData.fullName) newErrors.fullName = 'Full name is required';
-      if (!formData.fatherName) newErrors.fatherName = "Father's name is required";
-      if (!formData.motherName) newErrors.motherName = "Mother's name is required";
-      if (!formData.dateOfBirth) newErrors.dateOfBirth = 'Date of birth is required';
-      if (!formData.contactNumber) newErrors.contactNumber = 'Contact number is required';
+    if (formType === "citizenship") {
+      if (!formData.applicationType)
+        newErrors.applicationType = "Application type is required";
+      if (!formData.fullName) newErrors.fullName = "Full name is required";
+      if (!formData.fatherName)
+        newErrors.fatherName = "Father's name is required";
+      if (!formData.motherName)
+        newErrors.motherName = "Mother's name is required";
+      if (!formData.dateOfBirth)
+        newErrors.dateOfBirth = "Date of birth is required";
+      if (!formData.contactNumber)
+        newErrors.contactNumber = "Contact number is required";
     }
 
     // Check required files
-    files.forEach(file => {
+    files.forEach((file) => {
       if (file.required && !file.uploaded) {
         newErrors[file.id] = `${file.name} is required`;
       }
@@ -152,17 +264,17 @@ export default function Government() {
 
   const handleSubmit = async (formType: string) => {
     let formData, files;
-    
+
     switch (formType) {
-      case 'citizenship':
+      case "citizenship":
         formData = citizenshipForm;
         files = citizenshipFiles;
         break;
-      case 'passport':
+      case "passport":
         formData = passportForm;
         files = passportFiles;
         break;
-      case 'business':
+      case "business":
         formData = businessForm;
         files = businessFiles;
         break;
@@ -173,22 +285,25 @@ export default function Government() {
     if (!validateForm(formType, formData, files)) return;
 
     setIsSubmitting(true);
-    setSubmitStatus('idle');
+    setSubmitStatus("idle");
 
     try {
       // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+
       console.log(`${formType} application submitted:`, { formData, files });
-      setSubmitStatus('success');
+      setSubmitStatus("success");
     } catch (error) {
-      setSubmitStatus('error');
+      setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
     }
   };
 
-  const renderFileUpload = (files: FileUpload[], setFiles: React.Dispatch<React.SetStateAction<FileUpload[]>>) => (
+  const renderFileUpload = (
+    files: FileUpload[],
+    setFiles: React.Dispatch<React.SetStateAction<FileUpload[]>>,
+  ) => (
     <div className="space-y-4">
       <h4 className="font-medium text-foreground">Required Documents</h4>
       {files.map((fileItem) => (
@@ -196,7 +311,9 @@ export default function Government() {
           <div className="flex items-center justify-between mb-2">
             <Label className="font-medium">
               {fileItem.name}
-              {fileItem.required && <span className="text-destructive ml-1">*</span>}
+              {fileItem.required && (
+                <span className="text-destructive ml-1">*</span>
+              )}
             </Label>
             {fileItem.uploaded && (
               <CheckCircle className="h-5 w-5 text-green-500" />
@@ -216,7 +333,9 @@ export default function Government() {
               <Button
                 variant="outline"
                 size="sm"
-                onClick={() => handleFileUpload(files, setFiles, fileItem.id, null)}
+                onClick={() =>
+                  handleFileUpload(files, setFiles, fileItem.id, null)
+                }
               >
                 <X className="h-4 w-4" />
               </Button>
@@ -252,8 +371,8 @@ export default function Government() {
               <span className="text-primary"> Government Documents</span>
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
-              Submit applications for citizenship certificates, passports, and business registration 
-              through our secure digital platform.
+              Submit applications for citizenship certificates, passports, and
+              business registration through our secure digital platform.
             </p>
           </div>
         </div>
@@ -262,17 +381,30 @@ export default function Government() {
       {/* Application Forms */}
       <section className="py-20">
         <div className="container mx-auto px-4">
-          <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full max-w-6xl mx-auto">
+          <Tabs
+            value={activeTab}
+            onValueChange={setActiveTab}
+            className="w-full max-w-6xl mx-auto"
+          >
             <TabsList className="grid w-full grid-cols-1 md:grid-cols-3 mb-8">
-              <TabsTrigger value="citizenship" className="flex items-center space-x-2">
+              <TabsTrigger
+                value="citizenship"
+                className="flex items-center space-x-2"
+              >
                 <UserCheck className="h-4 w-4" />
                 <span>Citizenship Certificate</span>
               </TabsTrigger>
-              <TabsTrigger value="passport" className="flex items-center space-x-2">
+              <TabsTrigger
+                value="passport"
+                className="flex items-center space-x-2"
+              >
                 <IdCard className="h-4 w-4" />
                 <span>Passport Services</span>
               </TabsTrigger>
-              <TabsTrigger value="business" className="flex items-center space-x-2">
+              <TabsTrigger
+                value="business"
+                className="flex items-center space-x-2"
+              >
                 <Building className="h-4 w-4" />
                 <span>Business Registration</span>
               </TabsTrigger>
@@ -287,16 +419,22 @@ export default function Government() {
                     <span>Citizenship Certificate Application</span>
                   </CardTitle>
                   <CardDescription>
-                    Apply for new citizenship certificate or renewal. Processing time: 15 business days. Fee: NPR 100
+                    Apply for new citizenship certificate or renewal. Processing
+                    time: 15 business days. Fee: NPR 100
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-6">
                   {/* Application Type */}
                   <div className="space-y-2">
                     <Label htmlFor="citizenship-type">Application Type *</Label>
-                    <Select 
+                    <Select
                       value={citizenshipForm.applicationType}
-                      onValueChange={(value) => setCitizenshipForm(prev => ({ ...prev, applicationType: value }))}
+                      onValueChange={(value) =>
+                        setCitizenshipForm((prev) => ({
+                          ...prev,
+                          applicationType: value,
+                        }))
+                      }
                     >
                       <SelectTrigger>
                         <SelectValue placeholder="Select application type" />
@@ -304,8 +442,12 @@ export default function Government() {
                       <SelectContent>
                         <SelectItem value="new">New Application</SelectItem>
                         <SelectItem value="renewal">Renewal</SelectItem>
-                        <SelectItem value="duplicate">Duplicate Copy</SelectItem>
-                        <SelectItem value="correction">Name Correction</SelectItem>
+                        <SelectItem value="duplicate">
+                          Duplicate Copy
+                        </SelectItem>
+                        <SelectItem value="correction">
+                          Name Correction
+                        </SelectItem>
                       </SelectContent>
                     </Select>
                     {errors.applicationType && (
@@ -319,11 +461,18 @@ export default function Government() {
                   {/* Personal Information */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label htmlFor="full-name">Full Name (as per birth certificate) *</Label>
+                      <Label htmlFor="full-name">
+                        Full Name (as per birth certificate) *
+                      </Label>
                       <Input
                         id="full-name"
                         value={citizenshipForm.fullName}
-                        onChange={(e) => setCitizenshipForm(prev => ({ ...prev, fullName: e.target.value }))}
+                        onChange={(e) =>
+                          setCitizenshipForm((prev) => ({
+                            ...prev,
+                            fullName: e.target.value,
+                          }))
+                        }
                         placeholder="Enter full name"
                       />
                       {errors.fullName && (
@@ -338,7 +487,12 @@ export default function Government() {
                       <Input
                         id="father-name"
                         value={citizenshipForm.fatherName}
-                        onChange={(e) => setCitizenshipForm(prev => ({ ...prev, fatherName: e.target.value }))}
+                        onChange={(e) =>
+                          setCitizenshipForm((prev) => ({
+                            ...prev,
+                            fatherName: e.target.value,
+                          }))
+                        }
                         placeholder="Enter father's name"
                       />
                       {errors.fatherName && (
@@ -353,7 +507,12 @@ export default function Government() {
                       <Input
                         id="mother-name"
                         value={citizenshipForm.motherName}
-                        onChange={(e) => setCitizenshipForm(prev => ({ ...prev, motherName: e.target.value }))}
+                        onChange={(e) =>
+                          setCitizenshipForm((prev) => ({
+                            ...prev,
+                            motherName: e.target.value,
+                          }))
+                        }
                         placeholder="Enter mother's name"
                       />
                       {errors.motherName && (
@@ -364,11 +523,18 @@ export default function Government() {
                       )}
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="grandfather-name">Grandfather's Name</Label>
+                      <Label htmlFor="grandfather-name">
+                        Grandfather's Name
+                      </Label>
                       <Input
                         id="grandfather-name"
                         value={citizenshipForm.grandfatherName}
-                        onChange={(e) => setCitizenshipForm(prev => ({ ...prev, grandfatherName: e.target.value }))}
+                        onChange={(e) =>
+                          setCitizenshipForm((prev) => ({
+                            ...prev,
+                            grandfatherName: e.target.value,
+                          }))
+                        }
                         placeholder="Enter grandfather's name"
                       />
                     </div>
@@ -378,7 +544,12 @@ export default function Government() {
                         id="dob"
                         type="date"
                         value={citizenshipForm.dateOfBirth}
-                        onChange={(e) => setCitizenshipForm(prev => ({ ...prev, dateOfBirth: e.target.value }))}
+                        onChange={(e) =>
+                          setCitizenshipForm((prev) => ({
+                            ...prev,
+                            dateOfBirth: e.target.value,
+                          }))
+                        }
                       />
                       {errors.dateOfBirth && (
                         <p className="text-sm text-destructive flex items-center">
@@ -392,7 +563,12 @@ export default function Government() {
                       <Input
                         id="pob"
                         value={citizenshipForm.placeOfBirth}
-                        onChange={(e) => setCitizenshipForm(prev => ({ ...prev, placeOfBirth: e.target.value }))}
+                        onChange={(e) =>
+                          setCitizenshipForm((prev) => ({
+                            ...prev,
+                            placeOfBirth: e.target.value,
+                          }))
+                        }
                         placeholder="District, Municipality"
                       />
                     </div>
@@ -401,7 +577,12 @@ export default function Government() {
                       <Input
                         id="contact"
                         value={citizenshipForm.contactNumber}
-                        onChange={(e) => setCitizenshipForm(prev => ({ ...prev, contactNumber: e.target.value }))}
+                        onChange={(e) =>
+                          setCitizenshipForm((prev) => ({
+                            ...prev,
+                            contactNumber: e.target.value,
+                          }))
+                        }
                         placeholder="+977-98XXXXXXXX"
                       />
                       {errors.contactNumber && (
@@ -417,7 +598,12 @@ export default function Government() {
                         id="email"
                         type="email"
                         value={citizenshipForm.email}
-                        onChange={(e) => setCitizenshipForm(prev => ({ ...prev, email: e.target.value }))}
+                        onChange={(e) =>
+                          setCitizenshipForm((prev) => ({
+                            ...prev,
+                            email: e.target.value,
+                          }))
+                        }
                         placeholder="your.email@example.com"
                       />
                     </div>
@@ -426,21 +612,35 @@ export default function Government() {
                   {/* Address Information */}
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                     <div className="space-y-2">
-                      <Label htmlFor="permanent-address">Permanent Address</Label>
+                      <Label htmlFor="permanent-address">
+                        Permanent Address
+                      </Label>
                       <Textarea
                         id="permanent-address"
                         value={citizenshipForm.permanentAddress}
-                        onChange={(e) => setCitizenshipForm(prev => ({ ...prev, permanentAddress: e.target.value }))}
+                        onChange={(e) =>
+                          setCitizenshipForm((prev) => ({
+                            ...prev,
+                            permanentAddress: e.target.value,
+                          }))
+                        }
                         placeholder="Ward No., Municipality/VDC, District"
                         rows={3}
                       />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="temporary-address">Temporary Address</Label>
+                      <Label htmlFor="temporary-address">
+                        Temporary Address
+                      </Label>
                       <Textarea
                         id="temporary-address"
                         value={citizenshipForm.temporaryAddress}
-                        onChange={(e) => setCitizenshipForm(prev => ({ ...prev, temporaryAddress: e.target.value }))}
+                        onChange={(e) =>
+                          setCitizenshipForm((prev) => ({
+                            ...prev,
+                            temporaryAddress: e.target.value,
+                          }))
+                        }
                         placeholder="Ward No., Municipality/VDC, District"
                         rows={3}
                       />
@@ -453,7 +653,12 @@ export default function Government() {
                       <Label htmlFor="marital-status">Marital Status</Label>
                       <Select
                         value={citizenshipForm.maritalStatus}
-                        onValueChange={(value) => setCitizenshipForm(prev => ({ ...prev, maritalStatus: value }))}
+                        onValueChange={(value) =>
+                          setCitizenshipForm((prev) => ({
+                            ...prev,
+                            maritalStatus: value,
+                          }))
+                        }
                       >
                         <SelectTrigger>
                           <SelectValue placeholder="Select marital status" />
@@ -471,7 +676,12 @@ export default function Government() {
                       <Input
                         id="occupation"
                         value={citizenshipForm.occupation}
-                        onChange={(e) => setCitizenshipForm(prev => ({ ...prev, occupation: e.target.value }))}
+                        onChange={(e) =>
+                          setCitizenshipForm((prev) => ({
+                            ...prev,
+                            occupation: e.target.value,
+                          }))
+                        }
                         placeholder="Enter occupation"
                       />
                     </div>
@@ -481,27 +691,30 @@ export default function Government() {
                   {renderFileUpload(citizenshipFiles, setCitizenshipFiles)}
 
                   {/* Status Messages */}
-                  {submitStatus === 'success' && (
+                  {submitStatus === "success" && (
                     <Alert className="border-green-200 bg-green-50">
                       <CheckCircle className="h-4 w-4 text-green-600" />
                       <AlertDescription className="text-green-800">
-                        Application submitted successfully! Reference ID: CIT-2024-{Math.random().toString(36).substr(2, 9).toUpperCase()}
+                        Application submitted successfully! Reference ID:
+                        CIT-2024-
+                        {Math.random().toString(36).substr(2, 9).toUpperCase()}
                       </AlertDescription>
                     </Alert>
                   )}
 
-                  {submitStatus === 'error' && (
+                  {submitStatus === "error" && (
                     <Alert variant="destructive">
                       <AlertCircle className="h-4 w-4" />
                       <AlertDescription>
-                        Application submission failed. Please try again or contact support.
+                        Application submission failed. Please try again or
+                        contact support.
                       </AlertDescription>
                     </Alert>
                   )}
 
                   {/* Submit Button */}
-                  <Button 
-                    onClick={() => handleSubmit('citizenship')}
+                  <Button
+                    onClick={() => handleSubmit("citizenship")}
                     disabled={isSubmitting}
                     className="w-full"
                     size="lg"
@@ -531,13 +744,16 @@ export default function Government() {
                     <span>Passport Application</span>
                   </CardTitle>
                   <CardDescription>
-                    Apply for new passport or renewal. Processing time: 21 business days. Fee: NPR 5,000 - 15,000
+                    Apply for new passport or renewal. Processing time: 21
+                    business days. Fee: NPR 5,000 - 15,000
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="text-center py-12">
                     <IdCard className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
-                    <h3 className="text-lg font-semibold mb-2">Passport Application Form</h3>
+                    <h3 className="text-lg font-semibold mb-2">
+                      Passport Application Form
+                    </h3>
                     <p className="text-muted-foreground mb-4">
                       Comprehensive passport application form coming soon...
                     </p>
@@ -559,13 +775,16 @@ export default function Government() {
                     <span>Business Registration</span>
                   </CardTitle>
                   <CardDescription>
-                    Register your business and obtain licenses. Processing time: 7 business days. Fee: NPR 1,000+
+                    Register your business and obtain licenses. Processing time:
+                    7 business days. Fee: NPR 1,000+
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="text-center py-12">
                     <Building className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
-                    <h3 className="text-lg font-semibold mb-2">Business Registration Form</h3>
+                    <h3 className="text-lg font-semibold mb-2">
+                      Business Registration Form
+                    </h3>
                     <p className="text-muted-foreground mb-4">
                       Business registration form coming soon...
                     </p>
@@ -589,7 +808,8 @@ export default function Government() {
               Need Help with Your Application?
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
-              Our support team is available 24/7 to assist you with document applications.
+              Our support team is available 24/7 to assist you with document
+              applications.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <Card>

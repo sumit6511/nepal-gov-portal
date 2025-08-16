@@ -74,24 +74,8 @@ export default function App() {
                 />
               }
             />
-            <Route
-              path="/login"
-              element={
-                <PlaceholderPage
-                  title="Login"
-                  description="Secure access to your CitizenPortal account."
-                />
-              }
-            />
-            <Route
-              path="/register"
-              element={
-                <PlaceholderPage
-                  title="Create Account"
-                  description="Join CitizenPortal to access all government services digitally."
-                />
-              }
-            />
+            <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

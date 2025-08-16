@@ -141,8 +141,8 @@ export default function Index() {
               Comprehensive Digital Services
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Everything you need for government interactions, payments, and
-              healthcare management in one secure, easy-to-use platform.
+              Everything you need for Nepal government interactions, bill payments in NPR, and
+              healthcare management in one secure, easy-to-use digital platform.
             </p>
           </div>
 

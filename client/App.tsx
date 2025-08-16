@@ -40,12 +40,12 @@ export default function App() {
             />
             <Route
               path="/payments"
-              element={
-                <PlaceholderPage
-                  title="Payment Services"
-                  description="Pay utility bills, taxes, and government fees securely online."
-                />
-              }
+            element={
+              <PlaceholderPage
+                title="Bill Payment Services"
+                description="Pay electricity, water, internet bills and government fees securely in NPR through our digital platform."
+              />
+            }
             />
             <Route
               path="/medical"

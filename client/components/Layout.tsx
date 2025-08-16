@@ -132,11 +132,11 @@ export function Layout({ children }: LayoutProps) {
             <div className="space-y-4">
               <div className="flex items-center space-x-2">
                 <Shield className="h-6 w-6 text-primary" />
-                <span className="text-lg font-bold">CitizenPortal</span>
+                <span className="text-lg font-bold">NepalGov Portal</span>
               </div>
               <p className="text-sm text-muted-foreground">
-                Your gateway to efficient government services, secure payments,
-                and digital solutions.
+                Your gateway to efficient government services in Nepal, secure payments,
+                and digital solutions for citizens.
               </p>
             </div>
 

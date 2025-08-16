@@ -87,8 +87,8 @@ export default function Register() {
       }
       if (!formData.phone) {
         newErrors.phone = "Phone number is required";
-      } else if (!/^\d{10}$/.test(formData.phone.replace(/\D/g, ""))) {
-        newErrors.phone = "Please enter a valid 10-digit phone number";
+      } else if (!/^\+977-9[78]\d{8}$/.test(formData.phone)) {
+        newErrors.phone = "Please enter a valid Nepal mobile number (+977-98XXXXXXXX)";
       }
       if (!formData.dateOfBirth)
         newErrors.dateOfBirth = "Date of birth is required";
@@ -240,7 +240,7 @@ export default function Register() {
               <Label htmlFor="phone">Phone Number</Label>
               <Input
                 id="phone"
-                placeholder="(555) 123-4567"
+                placeholder="+977-98XXXXXXXX"
                 value={formData.phone}
                 onChange={(e) => handleInputChange("phone", e.target.value)}
                 className={errors.phone ? "border-destructive" : ""}

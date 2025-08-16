@@ -88,7 +88,8 @@ export default function Register() {
       if (!formData.phone) {
         newErrors.phone = "Phone number is required";
       } else if (!/^\+977-9[78]\d{8}$/.test(formData.phone)) {
-        newErrors.phone = "Please enter a valid Nepal mobile number (+977-98XXXXXXXX)";
+        newErrors.phone =
+          "Please enter a valid Nepal mobile number (+977-98XXXXXXXX)";
       }
       if (!formData.dateOfBirth)
         newErrors.dateOfBirth = "Date of birth is required";
@@ -329,7 +330,9 @@ export default function Register() {
                     <SelectItem value="Gandaki">Gandaki Pradesh</SelectItem>
                     <SelectItem value="Lumbini">Lumbini Pradesh</SelectItem>
                     <SelectItem value="Karnali">Karnali Pradesh</SelectItem>
-                    <SelectItem value="Sudurpashchim">Sudurpashchim Pradesh</SelectItem>
+                    <SelectItem value="Sudurpashchim">
+                      Sudurpashchim Pradesh
+                    </SelectItem>
                   </SelectContent>
                 </Select>
                 {errors.state && (
@@ -563,7 +566,8 @@ export default function Register() {
               Create Your Account
             </h1>
             <p className="text-muted-foreground mt-2">
-              Join NepalGov Portal to access all Nepal government services digitally
+              Join NepalGov Portal to access all Nepal government services
+              digitally
             </p>
           </div>
 

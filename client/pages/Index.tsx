@@ -50,7 +50,11 @@ export default function Index() {
       description:
         "Submit and track health insurance claims through Nepal's social security system.",
       href: "/medical",
-      features: ["SSF Health Claims", "Medical Reimbursement", "Digital Health Records"],
+      features: [
+        "SSF Health Claims",
+        "Medical Reimbursement",
+        "Digital Health Records",
+      ],
     },
     {
       icon: <BarChart3 className="h-8 w-8" />,
@@ -88,15 +92,16 @@ export default function Index() {
         <div className="container mx-auto px-4 py-20">
           <div className="max-w-4xl mx-auto text-center">
             <Badge variant="secondary" className="mb-6">
-🚀 New: Digital Nepal - Online Health Insurance Claims
+              🚀 New: Digital Nepal - Online Health Insurance Claims
             </Badge>
             <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
               Your Gateway to
               <span className="text-primary"> Digital Nepal</span>
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Access all Nepal government services, make secure payments in NPR, and manage
-              your digital identity through our comprehensive e-governance platform for Nepali citizens.
+              Access all Nepal government services, make secure payments in NPR,
+              and manage your digital identity through our comprehensive
+              e-governance platform for Nepali citizens.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" asChild>
@@ -141,8 +146,9 @@ export default function Index() {
               Comprehensive Digital Services
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Everything you need for Nepal government interactions, bill payments in NPR, and
-              healthcare management in one secure, easy-to-use digital platform.
+              Everything you need for Nepal government interactions, bill
+              payments in NPR, and healthcare management in one secure,
+              easy-to-use digital platform.
             </p>
           </div>
 
@@ -200,8 +206,8 @@ export default function Index() {
               Secure & Trusted Platform
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
-              Your data is protected with enterprise-grade security, Nepal government
-              compliance standards, and end-to-end encryption for all
+              Your data is protected with enterprise-grade security, Nepal
+              government compliance standards, and end-to-end encryption for all
               transactions.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
@@ -209,7 +215,9 @@ export default function Index() {
                 <div className="p-4 bg-background rounded-lg shadow-sm border mb-4">
                   <CheckCircle className="h-8 w-8 text-primary mx-auto" />
                 </div>
-                <h3 className="font-semibold mb-2">Nepal Government Certified</h3>
+                <h3 className="font-semibold mb-2">
+                  Nepal Government Certified
+                </h3>
                 <p className="text-sm text-muted-foreground">
                   Fully compliant with Nepal government security standards and
                   regulations.
@@ -246,8 +254,8 @@ export default function Index() {
               Ready to Get Started?
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
-              Join thousands of Nepali citizens who have simplified their government
-              interactions through our secure digital platform.
+              Join thousands of Nepali citizens who have simplified their
+              government interactions through our secure digital platform.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" asChild>

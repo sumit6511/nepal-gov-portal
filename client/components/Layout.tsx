@@ -135,8 +135,8 @@ export function Layout({ children }: LayoutProps) {
                 <span className="text-lg font-bold">NepalGov Portal</span>
               </div>
               <p className="text-sm text-muted-foreground">
-                Your gateway to efficient government services in Nepal, secure payments,
-                and digital solutions for citizens.
+                Your gateway to efficient government services in Nepal, secure
+                payments, and digital solutions for citizens.
               </p>
             </div>
 

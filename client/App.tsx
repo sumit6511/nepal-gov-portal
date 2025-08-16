@@ -31,30 +31,30 @@ export default function App() {
             />
             <Route
               path="/government"
-            element={
-              <PlaceholderPage
-                title="Nepal Government Services"
-                description="Apply for citizenship certificates, passports, business registration and permits through our secure digital platform."
-              />
-            }
+              element={
+                <PlaceholderPage
+                  title="Nepal Government Services"
+                  description="Apply for citizenship certificates, passports, business registration and permits through our secure digital platform."
+                />
+              }
             />
             <Route
               path="/payments"
-            element={
-              <PlaceholderPage
-                title="Bill Payment Services"
-                description="Pay electricity, water, internet bills and government fees securely in NPR through our digital platform."
-              />
-            }
+              element={
+                <PlaceholderPage
+                  title="Bill Payment Services"
+                  description="Pay electricity, water, internet bills and government fees securely in NPR through our digital platform."
+                />
+              }
             />
             <Route
               path="/medical"
-            element={
-              <PlaceholderPage
-                title="Health Insurance Claims"
-                description="Submit and track your health insurance claims through Nepal's Social Security Fund (SSF) system."
-              />
-            }
+              element={
+                <PlaceholderPage
+                  title="Health Insurance Claims"
+                  description="Submit and track your health insurance claims through Nepal's Social Security Fund (SSF) system."
+                />
+              }
             />
             <Route
               path="/dashboard"

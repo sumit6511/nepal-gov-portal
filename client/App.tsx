@@ -49,12 +49,12 @@ export default function App() {
             />
             <Route
               path="/medical"
-              element={
-                <PlaceholderPage
-                  title="Medical Claims"
-                  description="Submit and track your medical insurance claims with ease."
-                />
-              }
+            element={
+              <PlaceholderPage
+                title="Health Insurance Claims"
+                description="Submit and track your health insurance claims through Nepal's Social Security Fund (SSF) system."
+              />
+            }
             />
             <Route
               path="/dashboard"

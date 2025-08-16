@@ -208,15 +208,15 @@ export function Layout({ children }: LayoutProps) {
               <div className="space-y-2">
                 <div className="flex items-center space-x-2 text-sm text-muted-foreground">
                   <Phone className="h-4 w-4" />
-                  <span>+1 (555) 123-4567</span>
+                  <span>+977-1-4200100</span>
                 </div>
                 <div className="flex items-center space-x-2 text-sm text-muted-foreground">
                   <Mail className="h-4 w-4" />
-                  <span>support@citizenportal.gov</span>
+                  <span>support@nepalgovportal.gov.np</span>
                 </div>
                 <div className="flex items-center space-x-2 text-sm text-muted-foreground">
                   <MapPin className="h-4 w-4" />
-                  <span>123 Government Ave, Capital City</span>
+                  <span>Singha Durbar, Kathmandu, Nepal</span>
                 </div>
               </div>
               {/* Social Links */}

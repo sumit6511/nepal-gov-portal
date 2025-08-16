@@ -13,7 +13,7 @@ import {
   Clock,
   Shield,
   Users,
-  Passport,
+  IdCard,
   Building,
   Zap,
   Droplets,

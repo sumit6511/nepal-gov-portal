@@ -31,12 +31,12 @@ export default function App() {
             />
             <Route
               path="/government"
-              element={
-                <PlaceholderPage
-                  title="Government Services"
-                  description="Apply for documents, permits, and licenses through our secure digital platform."
-                />
-              }
+            element={
+              <PlaceholderPage
+                title="Nepal Government Services"
+                description="Apply for citizenship certificates, passports, business registration and permits through our secure digital platform."
+              />
+            }
             />
             <Route
               path="/payments"

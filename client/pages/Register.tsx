@@ -101,7 +101,7 @@ export default function Register() {
       if (!formData.zipCode) {
         newErrors.zipCode = "ZIP code is required";
       } else if (!/^\d{5}$/.test(formData.zipCode)) {
-        newErrors.zipCode = "Please enter a valid 5-digit ZIP code";
+        newErrors.zipCode = "Please enter a valid 5-digit postal code";
       }
     }
 

@@ -200,7 +200,7 @@ export default function Index() {
               Secure & Trusted Platform
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
-              Your data is protected with enterprise-grade security, government
+              Your data is protected with enterprise-grade security, Nepal government
               compliance standards, and end-to-end encryption for all
               transactions.
             </p>
@@ -209,9 +209,9 @@ export default function Index() {
                 <div className="p-4 bg-background rounded-lg shadow-sm border mb-4">
                   <CheckCircle className="h-8 w-8 text-primary mx-auto" />
                 </div>
-                <h3 className="font-semibold mb-2">Government Certified</h3>
+                <h3 className="font-semibold mb-2">Nepal Government Certified</h3>
                 <p className="text-sm text-muted-foreground">
-                  Fully compliant with government security standards and
+                  Fully compliant with Nepal government security standards and
                   regulations.
                 </p>
               </div>

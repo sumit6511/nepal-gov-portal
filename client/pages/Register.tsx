@@ -1,104 +1,132 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Layout } from '@/components/Layout';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Checkbox } from '@/components/ui/checkbox';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Alert, AlertDescription } from '@/components/ui/alert';
-import { Progress } from '@/components/ui/progress';
-import { Shield, Eye, EyeOff, AlertCircle, CheckCircle, User, Mail, Lock, FileText } from 'lucide-react';
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { Layout } from "@/components/Layout";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/components/ui/checkbox";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Progress } from "@/components/ui/progress";
+import {
+  Shield,
+  Eye,
+  EyeOff,
+  AlertCircle,
+  CheckCircle,
+  User,
+  Mail,
+  Lock,
+  FileText,
+} from "lucide-react";
 
 export default function Register() {
   const [currentStep, setCurrentStep] = useState(1);
   const [formData, setFormData] = useState({
     // Personal Info
-    firstName: '',
-    lastName: '',
-    email: '',
-    phone: '',
-    dateOfBirth: '',
-    
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    dateOfBirth: "",
+
     // Address
-    address: '',
-    city: '',
-    state: '',
-    zipCode: '',
-    
+    address: "",
+    city: "",
+    state: "",
+    zipCode: "",
+
     // Account
-    password: '',
-    confirmPassword: '',
-    
+    password: "",
+    confirmPassword: "",
+
     // Agreements
     acceptTerms: false,
     acceptPrivacy: false,
-    marketingEmails: false
+    marketingEmails: false,
   });
-  
+
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "success" | "error"
+  >("idle");
 
   const steps = [
-    { number: 1, title: 'Personal Info', icon: <User className="h-4 w-4" /> },
-    { number: 2, title: 'Address', icon: <Mail className="h-4 w-4" /> },
-    { number: 3, title: 'Security', icon: <Lock className="h-4 w-4" /> },
-    { number: 4, title: 'Agreements', icon: <FileText className="h-4 w-4" /> }
+    { number: 1, title: "Personal Info", icon: <User className="h-4 w-4" /> },
+    { number: 2, title: "Address", icon: <Mail className="h-4 w-4" /> },
+    { number: 3, title: "Security", icon: <Lock className="h-4 w-4" /> },
+    { number: 4, title: "Agreements", icon: <FileText className="h-4 w-4" /> },
   ];
 
   const validateStep = (step: number) => {
     const newErrors: Record<string, string> = {};
 
     if (step === 1) {
-      if (!formData.firstName) newErrors.firstName = 'First name is required';
-      if (!formData.lastName) newErrors.lastName = 'Last name is required';
+      if (!formData.firstName) newErrors.firstName = "First name is required";
+      if (!formData.lastName) newErrors.lastName = "Last name is required";
       if (!formData.email) {
-        newErrors.email = 'Email is required';
+        newErrors.email = "Email is required";
       } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-        newErrors.email = 'Please enter a valid email address';
+        newErrors.email = "Please enter a valid email address";
       }
       if (!formData.phone) {
-        newErrors.phone = 'Phone number is required';
-      } else if (!/^\d{10}$/.test(formData.phone.replace(/\D/g, ''))) {
-        newErrors.phone = 'Please enter a valid 10-digit phone number';
+        newErrors.phone = "Phone number is required";
+      } else if (!/^\d{10}$/.test(formData.phone.replace(/\D/g, ""))) {
+        newErrors.phone = "Please enter a valid 10-digit phone number";
       }
-      if (!formData.dateOfBirth) newErrors.dateOfBirth = 'Date of birth is required';
+      if (!formData.dateOfBirth)
+        newErrors.dateOfBirth = "Date of birth is required";
     }
 
     if (step === 2) {
-      if (!formData.address) newErrors.address = 'Address is required';
-      if (!formData.city) newErrors.city = 'City is required';
-      if (!formData.state) newErrors.state = 'State is required';
+      if (!formData.address) newErrors.address = "Address is required";
+      if (!formData.city) newErrors.city = "City is required";
+      if (!formData.state) newErrors.state = "State is required";
       if (!formData.zipCode) {
-        newErrors.zipCode = 'ZIP code is required';
+        newErrors.zipCode = "ZIP code is required";
       } else if (!/^\d{5}$/.test(formData.zipCode)) {
-        newErrors.zipCode = 'Please enter a valid 5-digit ZIP code';
+        newErrors.zipCode = "Please enter a valid 5-digit ZIP code";
       }
     }
 
     if (step === 3) {
       if (!formData.password) {
-        newErrors.password = 'Password is required';
+        newErrors.password = "Password is required";
       } else if (formData.password.length < 8) {
-        newErrors.password = 'Password must be at least 8 characters';
+        newErrors.password = "Password must be at least 8 characters";
       } else if (!/(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/.test(formData.password)) {
-        newErrors.password = 'Password must contain uppercase, lowercase, and number';
+        newErrors.password =
+          "Password must contain uppercase, lowercase, and number";
       }
-      
+
       if (!formData.confirmPassword) {
-        newErrors.confirmPassword = 'Please confirm your password';
+        newErrors.confirmPassword = "Please confirm your password";
       } else if (formData.password !== formData.confirmPassword) {
-        newErrors.confirmPassword = 'Passwords do not match';
+        newErrors.confirmPassword = "Passwords do not match";
       }
     }
 
     if (step === 4) {
-      if (!formData.acceptTerms) newErrors.acceptTerms = 'You must accept the Terms of Service';
-      if (!formData.acceptPrivacy) newErrors.acceptPrivacy = 'You must accept the Privacy Policy';
+      if (!formData.acceptTerms)
+        newErrors.acceptTerms = "You must accept the Terms of Service";
+      if (!formData.acceptPrivacy)
+        newErrors.acceptPrivacy = "You must accept the Privacy Policy";
     }
 
     setErrors(newErrors);
@@ -107,42 +135,42 @@ export default function Register() {
 
   const handleNext = () => {
     if (validateStep(currentStep)) {
-      setCurrentStep(prev => Math.min(prev + 1, 4));
+      setCurrentStep((prev) => Math.min(prev + 1, 4));
     }
   };
 
   const handlePrevious = () => {
-    setCurrentStep(prev => Math.max(prev - 1, 1));
+    setCurrentStep((prev) => Math.max(prev - 1, 1));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!validateStep(4)) return;
 
     setIsSubmitting(true);
-    setSubmitStatus('idle');
+    setSubmitStatus("idle");
 
     try {
       // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+
       // TODO: Replace with actual registration logic
-      console.log('Registration data:', formData);
-      
-      setSubmitStatus('success');
+      console.log("Registration data:", formData);
+
+      setSubmitStatus("success");
     } catch (error) {
-      setSubmitStatus('error');
+      setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
     }
   };
 
   const handleInputChange = (field: string, value: string | boolean) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+    setFormData((prev) => ({ ...prev, [field]: value }));
     // Clear error when user starts typing
     if (errors[field]) {
-      setErrors(prev => ({ ...prev, [field]: '' }));
+      setErrors((prev) => ({ ...prev, [field]: "" }));
     }
   };
 
@@ -158,8 +186,10 @@ export default function Register() {
                   id="firstName"
                   placeholder="John"
                   value={formData.firstName}
-                  onChange={(e) => handleInputChange('firstName', e.target.value)}
-                  className={errors.firstName ? 'border-destructive' : ''}
+                  onChange={(e) =>
+                    handleInputChange("firstName", e.target.value)
+                  }
+                  className={errors.firstName ? "border-destructive" : ""}
                 />
                 {errors.firstName && (
                   <p className="text-sm text-destructive flex items-center">
@@ -174,8 +204,10 @@ export default function Register() {
                   id="lastName"
                   placeholder="Doe"
                   value={formData.lastName}
-                  onChange={(e) => handleInputChange('lastName', e.target.value)}
-                  className={errors.lastName ? 'border-destructive' : ''}
+                  onChange={(e) =>
+                    handleInputChange("lastName", e.target.value)
+                  }
+                  className={errors.lastName ? "border-destructive" : ""}
                 />
                 {errors.lastName && (
                   <p className="text-sm text-destructive flex items-center">
@@ -185,7 +217,7 @@ export default function Register() {
                 )}
               </div>
             </div>
-            
+
             <div className="space-y-2">
               <Label htmlFor="email">Email Address</Label>
               <Input
@@ -193,8 +225,8 @@ export default function Register() {
                 type="email"
                 placeholder="john.doe@example.com"
                 value={formData.email}
-                onChange={(e) => handleInputChange('email', e.target.value)}
-                className={errors.email ? 'border-destructive' : ''}
+                onChange={(e) => handleInputChange("email", e.target.value)}
+                className={errors.email ? "border-destructive" : ""}
               />
               {errors.email && (
                 <p className="text-sm text-destructive flex items-center">
@@ -210,8 +242,8 @@ export default function Register() {
                 id="phone"
                 placeholder="(555) 123-4567"
                 value={formData.phone}
-                onChange={(e) => handleInputChange('phone', e.target.value)}
-                className={errors.phone ? 'border-destructive' : ''}
+                onChange={(e) => handleInputChange("phone", e.target.value)}
+                className={errors.phone ? "border-destructive" : ""}
               />
               {errors.phone && (
                 <p className="text-sm text-destructive flex items-center">
@@ -227,8 +259,10 @@ export default function Register() {
                 id="dateOfBirth"
                 type="date"
                 value={formData.dateOfBirth}
-                onChange={(e) => handleInputChange('dateOfBirth', e.target.value)}
-                className={errors.dateOfBirth ? 'border-destructive' : ''}
+                onChange={(e) =>
+                  handleInputChange("dateOfBirth", e.target.value)
+                }
+                className={errors.dateOfBirth ? "border-destructive" : ""}
               />
               {errors.dateOfBirth && (
                 <p className="text-sm text-destructive flex items-center">
@@ -249,8 +283,8 @@ export default function Register() {
                 id="address"
                 placeholder="123 Main Street"
                 value={formData.address}
-                onChange={(e) => handleInputChange('address', e.target.value)}
-                className={errors.address ? 'border-destructive' : ''}
+                onChange={(e) => handleInputChange("address", e.target.value)}
+                className={errors.address ? "border-destructive" : ""}
               />
               {errors.address && (
                 <p className="text-sm text-destructive flex items-center">
@@ -267,8 +301,8 @@ export default function Register() {
                   id="city"
                   placeholder="New York"
                   value={formData.city}
-                  onChange={(e) => handleInputChange('city', e.target.value)}
-                  className={errors.city ? 'border-destructive' : ''}
+                  onChange={(e) => handleInputChange("city", e.target.value)}
+                  className={errors.city ? "border-destructive" : ""}
                 />
                 {errors.city && (
                   <p className="text-sm text-destructive flex items-center">
@@ -279,8 +313,13 @@ export default function Register() {
               </div>
               <div className="space-y-2">
                 <Label htmlFor="state">State</Label>
-                <Select value={formData.state} onValueChange={(value) => handleInputChange('state', value)}>
-                  <SelectTrigger className={errors.state ? 'border-destructive' : ''}>
+                <Select
+                  value={formData.state}
+                  onValueChange={(value) => handleInputChange("state", value)}
+                >
+                  <SelectTrigger
+                    className={errors.state ? "border-destructive" : ""}
+                  >
                     <SelectValue placeholder="Select state" />
                   </SelectTrigger>
                   <SelectContent>
@@ -306,8 +345,8 @@ export default function Register() {
                 id="zipCode"
                 placeholder="12345"
                 value={formData.zipCode}
-                onChange={(e) => handleInputChange('zipCode', e.target.value)}
-                className={errors.zipCode ? 'border-destructive' : ''}
+                onChange={(e) => handleInputChange("zipCode", e.target.value)}
+                className={errors.zipCode ? "border-destructive" : ""}
               />
               {errors.zipCode && (
                 <p className="text-sm text-destructive flex items-center">
@@ -327,11 +366,15 @@ export default function Register() {
               <div className="relative">
                 <Input
                   id="password"
-                  type={showPassword ? 'text' : 'password'}
+                  type={showPassword ? "text" : "password"}
                   placeholder="Enter a strong password"
                   value={formData.password}
-                  onChange={(e) => handleInputChange('password', e.target.value)}
-                  className={errors.password ? 'border-destructive pr-10' : 'pr-10'}
+                  onChange={(e) =>
+                    handleInputChange("password", e.target.value)
+                  }
+                  className={
+                    errors.password ? "border-destructive pr-10" : "pr-10"
+                  }
                 />
                 <Button
                   type="button"
@@ -354,7 +397,8 @@ export default function Register() {
                 </p>
               )}
               <div className="text-xs text-muted-foreground">
-                Password must contain at least 8 characters with uppercase, lowercase, and number
+                Password must contain at least 8 characters with uppercase,
+                lowercase, and number
               </div>
             </div>
 
@@ -363,11 +407,17 @@ export default function Register() {
               <div className="relative">
                 <Input
                   id="confirmPassword"
-                  type={showConfirmPassword ? 'text' : 'password'}
+                  type={showConfirmPassword ? "text" : "password"}
                   placeholder="Confirm your password"
                   value={formData.confirmPassword}
-                  onChange={(e) => handleInputChange('confirmPassword', e.target.value)}
-                  className={errors.confirmPassword ? 'border-destructive pr-10' : 'pr-10'}
+                  onChange={(e) =>
+                    handleInputChange("confirmPassword", e.target.value)
+                  }
+                  className={
+                    errors.confirmPassword
+                      ? "border-destructive pr-10"
+                      : "pr-10"
+                  }
                 />
                 <Button
                   type="button"
@@ -401,12 +451,17 @@ export default function Register() {
                 <Checkbox
                   id="acceptTerms"
                   checked={formData.acceptTerms}
-                  onCheckedChange={(checked) => handleInputChange('acceptTerms', checked as boolean)}
-                  className={errors.acceptTerms ? 'border-destructive' : ''}
+                  onCheckedChange={(checked) =>
+                    handleInputChange("acceptTerms", checked as boolean)
+                  }
+                  className={errors.acceptTerms ? "border-destructive" : ""}
                 />
                 <div className="grid gap-1.5 leading-none">
-                  <Label htmlFor="acceptTerms" className="text-sm font-normal cursor-pointer">
-                    I accept the{' '}
+                  <Label
+                    htmlFor="acceptTerms"
+                    className="text-sm font-normal cursor-pointer"
+                  >
+                    I accept the{" "}
                     <Link to="#" className="text-primary hover:underline">
                       Terms of Service
                     </Link>
@@ -424,12 +479,17 @@ export default function Register() {
                 <Checkbox
                   id="acceptPrivacy"
                   checked={formData.acceptPrivacy}
-                  onCheckedChange={(checked) => handleInputChange('acceptPrivacy', checked as boolean)}
-                  className={errors.acceptPrivacy ? 'border-destructive' : ''}
+                  onCheckedChange={(checked) =>
+                    handleInputChange("acceptPrivacy", checked as boolean)
+                  }
+                  className={errors.acceptPrivacy ? "border-destructive" : ""}
                 />
                 <div className="grid gap-1.5 leading-none">
-                  <Label htmlFor="acceptPrivacy" className="text-sm font-normal cursor-pointer">
-                    I accept the{' '}
+                  <Label
+                    htmlFor="acceptPrivacy"
+                    className="text-sm font-normal cursor-pointer"
+                  >
+                    I accept the{" "}
                     <Link to="#" className="text-primary hover:underline">
                       Privacy Policy
                     </Link>
@@ -447,25 +507,32 @@ export default function Register() {
                 <Checkbox
                   id="marketingEmails"
                   checked={formData.marketingEmails}
-                  onCheckedChange={(checked) => handleInputChange('marketingEmails', checked as boolean)}
+                  onCheckedChange={(checked) =>
+                    handleInputChange("marketingEmails", checked as boolean)
+                  }
                 />
-                <Label htmlFor="marketingEmails" className="text-sm font-normal cursor-pointer">
-                  I would like to receive marketing emails about new services and updates
+                <Label
+                  htmlFor="marketingEmails"
+                  className="text-sm font-normal cursor-pointer"
+                >
+                  I would like to receive marketing emails about new services
+                  and updates
                 </Label>
               </div>
             </div>
 
             {/* Status Messages */}
-            {submitStatus === 'success' && (
+            {submitStatus === "success" && (
               <Alert className="border-green-200 bg-green-50">
                 <CheckCircle className="h-4 w-4 text-green-600" />
                 <AlertDescription className="text-green-800">
-                  Account created successfully! Please check your email to verify your account.
+                  Account created successfully! Please check your email to
+                  verify your account.
                 </AlertDescription>
               </Alert>
             )}
 
-            {submitStatus === 'error' && (
+            {submitStatus === "error" && (
               <Alert variant="destructive">
                 <AlertCircle className="h-4 w-4" />
                 <AlertDescription>
@@ -490,7 +557,9 @@ export default function Register() {
             <div className="inline-flex items-center justify-center p-3 bg-primary/10 rounded-full mb-4">
               <Shield className="h-8 w-8 text-primary" />
             </div>
-            <h1 className="text-2xl font-bold text-foreground">Create Your Account</h1>
+            <h1 className="text-2xl font-bold text-foreground">
+              Create Your Account
+            </h1>
             <p className="text-muted-foreground mt-2">
               Join CitizenPortal to access all government services digitally
             </p>
@@ -507,7 +576,7 @@ export default function Register() {
                 {currentStep === 3 && "Secure your account"}
                 {currentStep === 4 && "Review and confirm"}
               </CardDescription>
-              
+
               {/* Progress Bar */}
               <div className="w-full">
                 <Progress value={(currentStep / 4) * 100} className="h-2" />
@@ -516,7 +585,9 @@ export default function Register() {
                     <div
                       key={step.number}
                       className={`flex items-center space-x-1 text-xs ${
-                        step.number <= currentStep ? 'text-primary' : 'text-muted-foreground'
+                        step.number <= currentStep
+                          ? "text-primary"
+                          : "text-muted-foreground"
                       }`}
                     >
                       {step.icon}
@@ -526,11 +597,11 @@ export default function Register() {
                 </div>
               </div>
             </CardHeader>
-            
+
             <CardContent>
               <form onSubmit={handleSubmit}>
                 {renderStepContent()}
-                
+
                 {/* Navigation Buttons */}
                 <div className="flex justify-between mt-8">
                   <Button
@@ -541,14 +612,14 @@ export default function Register() {
                   >
                     Previous
                   </Button>
-                  
+
                   {currentStep < 4 ? (
                     <Button type="button" onClick={handleNext}>
                       Next
                     </Button>
                   ) : (
                     <Button type="submit" disabled={isSubmitting}>
-                      {isSubmitting ? 'Creating Account...' : 'Create Account'}
+                      {isSubmitting ? "Creating Account..." : "Create Account"}
                     </Button>
                   )}
                 </div>
@@ -556,8 +627,11 @@ export default function Register() {
 
               {/* Sign In Link */}
               <div className="text-center text-sm text-muted-foreground mt-6">
-                Already have an account?{' '}
-                <Link to="/login" className="text-primary hover:underline font-medium">
+                Already have an account?{" "}
+                <Link
+                  to="/login"
+                  className="text-primary hover:underline font-medium"
+                >
                   Sign in
                 </Link>
               </div>

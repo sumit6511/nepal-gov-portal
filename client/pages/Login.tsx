@@ -1,38 +1,46 @@
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Layout } from '@/components/Layout';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Checkbox } from '@/components/ui/checkbox';
-import { Alert, AlertDescription } from '@/components/ui/alert';
-import { Shield, Eye, EyeOff, AlertCircle, CheckCircle } from 'lucide-react';
+import { useState } from "react";
+import { Link } from "react-router-dom";
+import { Layout } from "@/components/Layout";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/components/ui/checkbox";
+import { Alert, AlertDescription } from "@/components/ui/alert";
+import { Shield, Eye, EyeOff, AlertCircle, CheckCircle } from "lucide-react";
 
 export default function Login() {
   const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-    rememberMe: false
+    email: "",
+    password: "",
+    rememberMe: false,
   });
   const [showPassword, setShowPassword] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "success" | "error"
+  >("idle");
 
   const validateForm = () => {
     const newErrors: Record<string, string> = {};
 
     if (!formData.email) {
-      newErrors.email = 'Email is required';
+      newErrors.email = "Email is required";
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = 'Please enter a valid email address';
+      newErrors.email = "Please enter a valid email address";
     }
 
     if (!formData.password) {
-      newErrors.password = 'Password is required';
+      newErrors.password = "Password is required";
     } else if (formData.password.length < 6) {
-      newErrors.password = 'Password must be at least 6 characters';
+      newErrors.password = "Password must be at least 6 characters";
     }
 
     setErrors(newErrors);
@@ -41,33 +49,33 @@ export default function Login() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!validateForm()) return;
 
     setIsSubmitting(true);
-    setSubmitStatus('idle');
+    setSubmitStatus("idle");
 
     try {
       // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
+      await new Promise((resolve) => setTimeout(resolve, 1500));
+
       // TODO: Replace with actual authentication logic
-      console.log('Login attempt:', formData);
-      
-      setSubmitStatus('success');
+      console.log("Login attempt:", formData);
+
+      setSubmitStatus("success");
       // In a real app, redirect to dashboard after successful login
     } catch (error) {
-      setSubmitStatus('error');
+      setSubmitStatus("error");
     } finally {
       setIsSubmitting(false);
     }
   };
 
   const handleInputChange = (field: string, value: string | boolean) => {
-    setFormData(prev => ({ ...prev, [field]: value }));
+    setFormData((prev) => ({ ...prev, [field]: value }));
     // Clear error when user starts typing
     if (errors[field]) {
-      setErrors(prev => ({ ...prev, [field]: '' }));
+      setErrors((prev) => ({ ...prev, [field]: "" }));
     }
   };
 
@@ -88,7 +96,9 @@ export default function Login() {
 
           <Card>
             <CardHeader className="space-y-1">
-              <CardTitle className="text-xl text-center">Login to your account</CardTitle>
+              <CardTitle className="text-xl text-center">
+                Login to your account
+              </CardTitle>
               <CardDescription className="text-center">
                 Enter your credentials to access government services
               </CardDescription>
@@ -103,8 +113,8 @@ export default function Login() {
                     type="email"
                     placeholder="Enter your email"
                     value={formData.email}
-                    onChange={(e) => handleInputChange('email', e.target.value)}
-                    className={errors.email ? 'border-destructive' : ''}
+                    onChange={(e) => handleInputChange("email", e.target.value)}
+                    className={errors.email ? "border-destructive" : ""}
                   />
                   {errors.email && (
                     <p className="text-sm text-destructive flex items-center">
@@ -120,11 +130,15 @@ export default function Login() {
                   <div className="relative">
                     <Input
                       id="password"
-                      type={showPassword ? 'text' : 'password'}
+                      type={showPassword ? "text" : "password"}
                       placeholder="Enter your password"
                       value={formData.password}
-                      onChange={(e) => handleInputChange('password', e.target.value)}
-                      className={errors.password ? 'border-destructive pr-10' : 'pr-10'}
+                      onChange={(e) =>
+                        handleInputChange("password", e.target.value)
+                      }
+                      className={
+                        errors.password ? "border-destructive pr-10" : "pr-10"
+                      }
                     />
                     <Button
                       type="button"
@@ -154,27 +168,24 @@ export default function Login() {
                     <Checkbox
                       id="remember"
                       checked={formData.rememberMe}
-                      onCheckedChange={(checked) => 
-                        handleInputChange('rememberMe', checked as boolean)
+                      onCheckedChange={(checked) =>
+                        handleInputChange("rememberMe", checked as boolean)
                       }
                     />
-                    <Label 
-                      htmlFor="remember" 
+                    <Label
+                      htmlFor="remember"
                       className="text-sm font-normal cursor-pointer"
                     >
                       Remember me
                     </Label>
                   </div>
-                  <Link 
-                    to="#" 
-                    className="text-sm text-primary hover:underline"
-                  >
+                  <Link to="#" className="text-sm text-primary hover:underline">
                     Forgot password?
                   </Link>
                 </div>
 
                 {/* Status Messages */}
-                {submitStatus === 'success' && (
+                {submitStatus === "success" && (
                   <Alert className="border-green-200 bg-green-50">
                     <CheckCircle className="h-4 w-4 text-green-600" />
                     <AlertDescription className="text-green-800">
@@ -183,7 +194,7 @@ export default function Login() {
                   </Alert>
                 )}
 
-                {submitStatus === 'error' && (
+                {submitStatus === "error" && (
                   <Alert variant="destructive">
                     <AlertCircle className="h-4 w-4" />
                     <AlertDescription>
@@ -193,12 +204,12 @@ export default function Login() {
                 )}
 
                 {/* Submit Button */}
-                <Button 
-                  type="submit" 
-                  className="w-full" 
+                <Button
+                  type="submit"
+                  className="w-full"
                   disabled={isSubmitting}
                 >
-                  {isSubmitting ? 'Signing in...' : 'Sign In'}
+                  {isSubmitting ? "Signing in..." : "Sign In"}
                 </Button>
               </form>
 
@@ -238,8 +249,12 @@ export default function Login() {
                   Google
                 </Button>
                 <Button variant="outline" className="w-full" disabled>
-                  <svg className="mr-2 h-4 w-4" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                  <svg
+                    className="mr-2 h-4 w-4"
+                    fill="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
                   </svg>
                   Twitter
                 </Button>
@@ -247,8 +262,11 @@ export default function Login() {
 
               {/* Sign Up Link */}
               <div className="text-center text-sm text-muted-foreground mt-6">
-                Don't have an account?{' '}
-                <Link to="/register" className="text-primary hover:underline font-medium">
+                Don't have an account?{" "}
+                <Link
+                  to="/register"
+                  className="text-primary hover:underline font-medium"
+                >
                   Create account
                 </Link>
               </div>
@@ -258,7 +276,10 @@ export default function Login() {
           {/* Security Notice */}
           <div className="mt-6 text-center text-xs text-muted-foreground">
             <p>🔒 Your connection is secure and encrypted</p>
-            <p>By signing in, you agree to our Terms of Service and Privacy Policy</p>
+            <p>
+              By signing in, you agree to our Terms of Service and Privacy
+              Policy
+            </p>
           </div>
         </div>
       </div>

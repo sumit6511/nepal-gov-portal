@@ -561,7 +561,7 @@ export default function Register() {
               Create Your Account
             </h1>
             <p className="text-muted-foreground mt-2">
-              Join CitizenPortal to access all government services digitally
+              Join NepalGov Portal to access all Nepal government services digitally
             </p>
           </div>
 

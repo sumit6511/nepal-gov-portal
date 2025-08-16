@@ -68,7 +68,7 @@ export default function Index() {
 
   const stats = [
     {
-      number: "50K+",
+      number: "25K+",
       label: "Active Users",
       icon: <Users className="h-5 w-5" />,
     },

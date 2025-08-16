@@ -88,16 +88,15 @@ export default function Index() {
         <div className="container mx-auto px-4 py-20">
           <div className="max-w-4xl mx-auto text-center">
             <Badge variant="secondary" className="mb-6">
-              🚀 New: AI-Powered Medical Claims Processing
+🚀 New: Digital Nepal - Online Health Insurance Claims
             </Badge>
             <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
               Your Gateway to
-              <span className="text-primary"> Digital Government</span>
+              <span className="text-primary"> Digital Nepal</span>
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Access all government services, make secure payments, and manage
-              your digital identity through our comprehensive citizen services
-              platform.
+              Access all Nepal government services, make secure payments in NPR, and manage
+              your digital identity through our comprehensive e-governance platform for Nepali citizens.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" asChild>

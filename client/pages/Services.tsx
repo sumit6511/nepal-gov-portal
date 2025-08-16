@@ -49,7 +49,7 @@ export default function Services() {
         {
           title: 'Passport Services',
           description: 'Apply for new passport or renewal through digital platform',
-          icon: <Passport className="h-8 w-8" />,
+          icon: <IdCard className="h-8 w-8" />,
           features: ['New Passport', 'Renewal', 'Appointment Booking', 'Fee Payment'],
           processingTime: '21 business days',
           fee: 'NPR 5,000 - 15,000',

@@ -246,8 +246,8 @@ export default function Index() {
               Ready to Get Started?
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
-              Join thousands of citizens who have simplified their government
-              interactions through our digital platform.
+              Join thousands of Nepali citizens who have simplified their government
+              interactions through our secure digital platform.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" asChild>

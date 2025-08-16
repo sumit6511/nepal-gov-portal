@@ -1,7 +1,17 @@
-import { ReactNode, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Button } from './ui/button';
-import { Menu, X, Shield, Phone, Mail, MapPin, Facebook, Twitter, Linkedin } from 'lucide-react';
+import { ReactNode, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { Button } from "./ui/button";
+import {
+  Menu,
+  X,
+  Shield,
+  Phone,
+  Mail,
+  MapPin,
+  Facebook,
+  Twitter,
+  Linkedin,
+} from "lucide-react";
 
 interface LayoutProps {
   children: ReactNode;
@@ -12,13 +22,13 @@ export function Layout({ children }: LayoutProps) {
   const location = useLocation();
 
   const navItems = [
-    { name: 'Home', href: '/' },
-    { name: 'Services', href: '/services' },
-    { name: 'Government Services', href: '/government' },
-    { name: 'Payments', href: '/payments' },
-    { name: 'Medical Claims', href: '/medical' },
-    { name: 'Dashboard', href: '/dashboard' },
-    { name: 'Contact', href: '/contact' },
+    { name: "Home", href: "/" },
+    { name: "Services", href: "/services" },
+    { name: "Government Services", href: "/government" },
+    { name: "Payments", href: "/payments" },
+    { name: "Medical Claims", href: "/medical" },
+    { name: "Dashboard", href: "/dashboard" },
+    { name: "Contact", href: "/contact" },
   ];
 
   const isActive = (href: string) => location.pathname === href;
@@ -32,7 +42,9 @@ export function Layout({ children }: LayoutProps) {
             {/* Logo */}
             <Link to="/" className="flex items-center space-x-2">
               <Shield className="h-8 w-8 text-primary" />
-              <span className="text-xl font-bold text-foreground">CitizenPortal</span>
+              <span className="text-xl font-bold text-foreground">
+                CitizenPortal
+              </span>
             </Link>
 
             {/* Desktop Navigation */}
@@ -42,9 +54,9 @@ export function Layout({ children }: LayoutProps) {
                   key={item.name}
                   to={item.href}
                   className={`text-sm font-medium transition-colors hover:text-primary ${
-                    isActive(item.href) 
-                      ? 'text-primary' 
-                      : 'text-muted-foreground'
+                    isActive(item.href)
+                      ? "text-primary"
+                      : "text-muted-foreground"
                   }`}
                 >
                   {item.name}
@@ -69,7 +81,11 @@ export function Layout({ children }: LayoutProps) {
               className="md:hidden"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
-              {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              {isMobileMenuOpen ? (
+                <X className="h-5 w-5" />
+              ) : (
+                <Menu className="h-5 w-5" />
+              )}
             </Button>
           </div>
 
@@ -82,9 +98,9 @@ export function Layout({ children }: LayoutProps) {
                     key={item.name}
                     to={item.href}
                     className={`block px-4 py-2 text-sm font-medium transition-colors hover:text-primary ${
-                      isActive(item.href) 
-                        ? 'text-primary bg-accent' 
-                        : 'text-muted-foreground'
+                      isActive(item.href)
+                        ? "text-primary bg-accent"
+                        : "text-muted-foreground"
                     }`}
                     onClick={() => setIsMobileMenuOpen(false)}
                   >
@@ -106,9 +122,7 @@ export function Layout({ children }: LayoutProps) {
       </header>
 
       {/* Main Content */}
-      <main className="flex-1">
-        {children}
-      </main>
+      <main className="flex-1">{children}</main>
 
       {/* Footer */}
       <footer className="border-t bg-muted/30">
@@ -121,7 +135,8 @@ export function Layout({ children }: LayoutProps) {
                 <span className="text-lg font-bold">CitizenPortal</span>
               </div>
               <p className="text-sm text-muted-foreground">
-                Your gateway to efficient government services, secure payments, and digital solutions.
+                Your gateway to efficient government services, secure payments,
+                and digital solutions.
               </p>
             </div>
 
@@ -129,16 +144,28 @@ export function Layout({ children }: LayoutProps) {
             <div className="space-y-4">
               <h4 className="text-sm font-semibold">Quick Links</h4>
               <nav className="space-y-2">
-                <Link to="/services" className="block text-sm text-muted-foreground hover:text-primary">
+                <Link
+                  to="/services"
+                  className="block text-sm text-muted-foreground hover:text-primary"
+                >
                   Services
                 </Link>
-                <Link to="/government" className="block text-sm text-muted-foreground hover:text-primary">
+                <Link
+                  to="/government"
+                  className="block text-sm text-muted-foreground hover:text-primary"
+                >
                   Government Services
                 </Link>
-                <Link to="/payments" className="block text-sm text-muted-foreground hover:text-primary">
+                <Link
+                  to="/payments"
+                  className="block text-sm text-muted-foreground hover:text-primary"
+                >
                   Payments
                 </Link>
-                <Link to="/dashboard" className="block text-sm text-muted-foreground hover:text-primary">
+                <Link
+                  to="/dashboard"
+                  className="block text-sm text-muted-foreground hover:text-primary"
+                >
                   Dashboard
                 </Link>
               </nav>
@@ -148,16 +175,28 @@ export function Layout({ children }: LayoutProps) {
             <div className="space-y-4">
               <h4 className="text-sm font-semibold">Support</h4>
               <nav className="space-y-2">
-                <Link to="/contact" className="block text-sm text-muted-foreground hover:text-primary">
+                <Link
+                  to="/contact"
+                  className="block text-sm text-muted-foreground hover:text-primary"
+                >
                   Contact Us
                 </Link>
-                <a href="#" className="block text-sm text-muted-foreground hover:text-primary">
+                <a
+                  href="#"
+                  className="block text-sm text-muted-foreground hover:text-primary"
+                >
                   Help Center
                 </a>
-                <a href="#" className="block text-sm text-muted-foreground hover:text-primary">
+                <a
+                  href="#"
+                  className="block text-sm text-muted-foreground hover:text-primary"
+                >
                   Privacy Policy
                 </a>
-                <a href="#" className="block text-sm text-muted-foreground hover:text-primary">
+                <a
+                  href="#"
+                  className="block text-sm text-muted-foreground hover:text-primary"
+                >
                   Terms of Service
                 </a>
               </nav>
@@ -196,7 +235,10 @@ export function Layout({ children }: LayoutProps) {
           </div>
 
           <div className="mt-8 pt-8 border-t text-center text-sm text-muted-foreground">
-            <p>&copy; 2024 CitizenPortal. All rights reserved. | Powered by Digital Government Initiative</p>
+            <p>
+              &copy; 2024 CitizenPortal. All rights reserved. | Powered by
+              Digital Government Initiative
+            </p>
           </div>
         </div>
       </footer>

@@ -1,58 +1,84 @@
-import { Layout } from '@/components/Layout';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { 
-  ArrowRight, 
-  Shield, 
-  Clock, 
-  Users, 
-  FileText, 
-  CreditCard, 
-  Heart, 
+import { Layout } from "@/components/Layout";
+import { Button } from "@/components/ui/button";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import {
+  ArrowRight,
+  Shield,
+  Clock,
+  Users,
+  FileText,
+  CreditCard,
+  Heart,
   BarChart3,
   CheckCircle,
-  Star
-} from 'lucide-react';
-import { Link } from 'react-router-dom';
+  Star,
+} from "lucide-react";
+import { Link } from "react-router-dom";
 
 export default function Index() {
   const services = [
     {
       icon: <FileText className="h-8 w-8" />,
       title: "Government Services",
-      description: "Apply for documents, permits, and licenses online with instant processing.",
+      description:
+        "Apply for documents, permits, and licenses online with instant processing.",
       href: "/government",
-      features: ["Digital Certificates", "License Renewal", "Permit Applications"]
+      features: [
+        "Digital Certificates",
+        "License Renewal",
+        "Permit Applications",
+      ],
     },
     {
       icon: <CreditCard className="h-8 w-8" />,
       title: "Payment Services",
-      description: "Pay bills, taxes, and fees securely through our integrated payment system.",
+      description:
+        "Pay bills, taxes, and fees securely through our integrated payment system.",
       href: "/payments",
-      features: ["Utility Bills", "Tax Payments", "Government Fees"]
+      features: ["Utility Bills", "Tax Payments", "Government Fees"],
     },
     {
       icon: <Heart className="h-8 w-8" />,
       title: "Medical Claims",
-      description: "Submit and track medical insurance claims with AI-powered processing.",
+      description:
+        "Submit and track medical insurance claims with AI-powered processing.",
       href: "/medical",
-      features: ["Claim Submission", "Status Tracking", "Digital Records"]
+      features: ["Claim Submission", "Status Tracking", "Digital Records"],
     },
     {
       icon: <BarChart3 className="h-8 w-8" />,
       title: "Dashboard",
-      description: "Monitor all your applications, payments, and services in one place.",
+      description:
+        "Monitor all your applications, payments, and services in one place.",
       href: "/dashboard",
-      features: ["Real-time Status", "History Tracking", "Analytics"]
-    }
+      features: ["Real-time Status", "History Tracking", "Analytics"],
+    },
   ];
 
   const stats = [
-    { number: "50K+", label: "Active Users", icon: <Users className="h-5 w-5" /> },
-    { number: "99.9%", label: "Uptime", icon: <CheckCircle className="h-5 w-5" /> },
+    {
+      number: "50K+",
+      label: "Active Users",
+      icon: <Users className="h-5 w-5" />,
+    },
+    {
+      number: "99.9%",
+      label: "Uptime",
+      icon: <CheckCircle className="h-5 w-5" />,
+    },
     { number: "24/7", label: "Support", icon: <Clock className="h-5 w-5" /> },
-    { number: "4.9★", label: "User Rating", icon: <Star className="h-5 w-5" /> }
+    {
+      number: "4.9★",
+      label: "User Rating",
+      icon: <Star className="h-5 w-5" />,
+    },
   ];
 
   return (
@@ -65,12 +91,13 @@ export default function Index() {
               🚀 New: AI-Powered Medical Claims Processing
             </Badge>
             <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
-              Your Gateway to 
+              Your Gateway to
               <span className="text-primary"> Digital Government</span>
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-              Access all government services, make secure payments, and manage your digital identity 
-              through our comprehensive citizen services platform.
+              Access all government services, make secure payments, and manage
+              your digital identity through our comprehensive citizen services
+              platform.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" asChild>
@@ -95,8 +122,12 @@ export default function Index() {
                 <div className="flex items-center justify-center mb-2 text-primary">
                   {stat.icon}
                 </div>
-                <div className="text-2xl md:text-3xl font-bold text-foreground">{stat.number}</div>
-                <div className="text-sm text-muted-foreground">{stat.label}</div>
+                <div className="text-2xl md:text-3xl font-bold text-foreground">
+                  {stat.number}
+                </div>
+                <div className="text-sm text-muted-foreground">
+                  {stat.label}
+                </div>
               </div>
             ))}
           </div>
@@ -111,14 +142,17 @@ export default function Index() {
               Comprehensive Digital Services
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Everything you need for government interactions, payments, and healthcare management 
-              in one secure, easy-to-use platform.
+              Everything you need for government interactions, payments, and
+              healthcare management in one secure, easy-to-use platform.
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {services.map((service, index) => (
-              <Card key={index} className="group hover:shadow-lg transition-all duration-300 border-2 hover:border-primary/20">
+              <Card
+                key={index}
+                className="group hover:shadow-lg transition-all duration-300 border-2 hover:border-primary/20"
+              >
                 <CardHeader>
                   <div className="flex items-center space-x-4">
                     <div className="p-3 bg-primary/10 rounded-lg text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
@@ -135,7 +169,10 @@ export default function Index() {
                 <CardContent>
                   <ul className="space-y-2 mb-6">
                     {service.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="flex items-center text-sm text-muted-foreground">
+                      <li
+                        key={featureIndex}
+                        className="flex items-center text-sm text-muted-foreground"
+                      >
                         <CheckCircle className="h-4 w-4 text-primary mr-2 flex-shrink-0" />
                         {feature}
                       </li>
@@ -164,8 +201,9 @@ export default function Index() {
               Secure & Trusted Platform
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
-              Your data is protected with enterprise-grade security, government compliance standards, 
-              and end-to-end encryption for all transactions.
+              Your data is protected with enterprise-grade security, government
+              compliance standards, and end-to-end encryption for all
+              transactions.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
               <div className="text-center">
@@ -174,7 +212,8 @@ export default function Index() {
                 </div>
                 <h3 className="font-semibold mb-2">Government Certified</h3>
                 <p className="text-sm text-muted-foreground">
-                  Fully compliant with government security standards and regulations.
+                  Fully compliant with government security standards and
+                  regulations.
                 </p>
               </div>
               <div className="text-center">
@@ -208,8 +247,8 @@ export default function Index() {
               Ready to Get Started?
             </h2>
             <p className="text-lg text-muted-foreground mb-8">
-              Join thousands of citizens who have simplified their government interactions 
-              through our digital platform.
+              Join thousands of citizens who have simplified their government
+              interactions through our digital platform.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" asChild>

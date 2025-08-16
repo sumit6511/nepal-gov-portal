@@ -25,8 +25,8 @@ export function Layout({ children }: LayoutProps) {
     { name: "Home", href: "/" },
     { name: "Services", href: "/services" },
     { name: "Government Services", href: "/government" },
-    { name: "Payments", href: "/payments" },
-    { name: "Medical Claims", href: "/medical" },
+    { name: "Bill Payments", href: "/payments" },
+    { name: "Health Insurance", href: "/medical" },
     { name: "Dashboard", href: "/dashboard" },
     { name: "Contact", href: "/contact" },
   ];

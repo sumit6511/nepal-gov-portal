@@ -236,8 +236,8 @@ export function Layout({ children }: LayoutProps) {
 
           <div className="mt-8 pt-8 border-t text-center text-sm text-muted-foreground">
             <p>
-              &copy; 2024 CitizenPortal. All rights reserved. | Powered by
-              Digital Government Initiative
+              &copy; 2024 Government of Nepal. All rights reserved. | Powered by
+              Digital Nepal Initiative
             </p>
           </div>
         </div>

@@ -21,15 +21,7 @@ export default function App() {
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
-            <Route
-              path="/services"
-              element={
-                <PlaceholderPage
-                  title="Services Overview"
-                  description="Explore our comprehensive range of digital government services designed to make your life easier."
-                />
-              }
-            />
+            <Route path="/services" element={<Services />} />
             <Route
               path="/government"
               element={

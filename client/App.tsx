@@ -23,15 +23,7 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/services" element={<Services />} />
-            <Route
-              path="/government"
-              element={
-                <PlaceholderPage
-                  title="Nepal Government Services"
-                  description="Apply for citizenship certificates, passports, business registration and permits through our secure digital platform."
-                />
-              }
-            />
+            <Route path="/government" element={<Government />} />
             <Route
               path="/payments"
               element={

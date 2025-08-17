@@ -25,15 +25,7 @@ export default function App() {
             <Route path="/" element={<Index />} />
             <Route path="/services" element={<Services />} />
             <Route path="/government" element={<Government />} />
-            <Route
-              path="/payments"
-              element={
-                <PlaceholderPage
-                  title="Bill Payment Services"
-                  description="Pay electricity, water, internet bills and government fees securely in NPR through our digital platform."
-                />
-              }
-            />
+            <Route path="/payments" element={<Payments />} />
             <Route
               path="/medical"
               element={

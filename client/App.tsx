@@ -35,15 +35,7 @@ export default function App() {
             />
           }
         />
-        <Route
-          path="/contact"
-          element={
-            <PlaceholderPage
-              title="Contact Support"
-              description="Get in touch with our support team for assistance with any service."
-            />
-          }
-        />
+        <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

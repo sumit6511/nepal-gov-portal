@@ -427,23 +427,22 @@ export default function Payments() {
                 {/* Quick Actions */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   {quickPayments.map((payment, index) => (
-                    <Card 
-                      key={payment.id} 
-                      className={`group hover:shadow-xl transition-all duration-500 cursor-pointer border-2 hover:border-primary/50 bg-gradient-to-br ${payment.color} p-1 ${animateCards ? 'animate-in slide-in-from-left duration-1000' : ''}`}
-                      style={{ animationDelay: `${index * 150}ms` }}
+                    <Card
+                      key={payment.id}
+                      className={`cursor-pointer border-2 hover:border-primary/50 bg-gradient-to-br ${payment.color} p-1`}
                       onClick={() => handleQuickPayment(payment)}
                     >
                       <div className="bg-background rounded-lg p-6 h-full">
                         <CardHeader className="p-0 mb-4">
                           <div className="flex items-center justify-between">
-                            <div className={`p-3 rounded-full bg-gradient-to-br ${payment.color} text-white shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                            <div className={`p-3 rounded-full bg-gradient-to-br ${payment.color} text-white shadow-lg`}>
                               {payment.icon}
                             </div>
                             <Badge className={`${getDaysUntilDue(payment.dueDate) <= 3 ? 'bg-red-100 text-red-800' : 'bg-green-100 text-green-800'}`}>
                               {getDaysUntilDue(payment.dueDate)} days
                             </Badge>
                           </div>
-                          <CardTitle className="text-lg group-hover:text-primary transition-colors">
+                          <CardTitle className="text-lg">
                             {payment.service}
                           </CardTitle>
                           <CardDescription className="text-sm">
@@ -459,7 +458,7 @@ export default function Payments() {
                               Due: {new Date(payment.dueDate).toLocaleDateString()}
                             </span>
                           </div>
-                          <Button className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
+                          <Button className="w-full">
                             <CreditCard className="mr-2 h-4 w-4" />
                             Pay Now
                           </Button>

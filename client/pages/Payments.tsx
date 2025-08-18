@@ -570,11 +570,11 @@ export default function Payments() {
                           <CheckCircle className="absolute right-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-green-500" />
                         )}
                       </div>
-                      <Button 
+                      <Button
                         variant="outline"
                         onClick={() => handleBillLookup('electricity')}
                         disabled={!electricityForm.customerNumber || loadingBill}
-                        className="px-6 hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+                        className="px-6"
                       >
                         {loadingBill ? (
                           <RefreshCw className="h-4 w-4 animate-spin" />
@@ -585,7 +585,7 @@ export default function Payments() {
                       </Button>
                     </div>
                     {errors.electricity_customerNumber && (
-                      <p className="text-sm text-destructive flex items-center animate-in slide-in-from-left duration-300">
+                      <p className="text-sm text-destructive flex items-center">
                         <AlertCircle className="h-4 w-4 mr-1" />
                         {errors.electricity_customerNumber}
                       </p>
@@ -594,7 +594,7 @@ export default function Payments() {
 
                   {/* Loading Progress */}
                   {loadingBill && (
-                    <Card className="bg-gradient-to-r from-blue-50 to-purple-50 border-blue-200 animate-in slide-in-from-top duration-500">
+                    <Card className="bg-gradient-to-r from-blue-50 to-purple-50 border-blue-200">
                       <CardContent className="p-4">
                         <div className="flex items-center space-x-3 mb-3">
                           <RefreshCw className="h-5 w-5 text-blue-600 animate-spin" />

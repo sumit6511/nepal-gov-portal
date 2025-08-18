@@ -709,7 +709,7 @@ export default function Payments() {
 
                   {/* Status Messages */}
                   {paymentStatus === 'success' && (
-                    <Alert className="border-green-200 bg-green-50 animate-in slide-in-from-top duration-500">
+                    <Alert className="border-green-200 bg-green-50">
                       <CheckCircle className="h-4 w-4 text-green-600" />
                       <AlertDescription className="text-green-800">
                         <strong>Payment Successful!</strong><br />
@@ -720,7 +720,7 @@ export default function Payments() {
                   )}
 
                   {paymentStatus === 'error' && (
-                    <Alert variant="destructive" className="animate-in slide-in-from-top duration-500">
+                    <Alert variant="destructive">
                       <AlertCircle className="h-4 w-4" />
                       <AlertDescription>
                         Payment failed. Please check your details and try again, or contact support at +977-1-4200100.
@@ -728,7 +728,7 @@ export default function Payments() {
                     </Alert>
                   )}
 
-                  {/* Enhanced Payment Button */}
+                  {/* Payment Button */}
                   <div className="space-y-4">
                     {isProcessing && (
                       <Card className="bg-blue-50 border-blue-200">
@@ -745,10 +745,10 @@ export default function Payments() {
                       </Card>
                     )}
 
-                    <Button 
+                    <Button
                       onClick={() => handlePayment('electricity')}
                       disabled={isProcessing || !electricityForm.amount || !electricityForm.phoneNumber}
-                      className="w-full h-12 text-lg bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary transition-all duration-300 shadow-lg hover:shadow-xl"
+                      className="w-full h-12 text-lg"
                       size="lg"
                     >
                       {isProcessing ? (

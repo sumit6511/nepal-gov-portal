@@ -27,15 +27,7 @@ export default function App() {
             />
           }
         />
-        <Route
-          path="/dashboard"
-          element={
-            <PlaceholderPage
-              title="User Dashboard"
-              description="Track your applications, payments, and services in one centralized location."
-            />
-          }
-        />
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />

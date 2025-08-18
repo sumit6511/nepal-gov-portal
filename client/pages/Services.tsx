@@ -265,12 +265,12 @@ export default function Services() {
 
   const stats = [
     {
-      number: "50K+",
+      number: "25K+",
       label: "Active Users",
       icon: <Users className="h-5 w-5" />,
     },
     {
-      number: "200+",
+      number: "10+",
       label: "Services Available",
       icon: <FileText className="h-5 w-5" />,
     },

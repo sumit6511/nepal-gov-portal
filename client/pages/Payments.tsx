@@ -354,23 +354,18 @@ export default function Payments() {
 
   return (
     <Layout>
-      {/* Enhanced Hero Section with Animated Background */}
-      <section className="relative bg-gradient-to-br from-primary/10 via-background to-accent/20 overflow-hidden py-16">
-        <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
-        <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-primary/20 to-transparent rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-accent/20 to-transparent rounded-full blur-3xl"></div>
-        
-        <div className="container mx-auto px-4 relative z-10">
+      {/* Hero Section */}
+      <section className="bg-gradient-to-br from-primary/10 via-background to-accent/20 py-16">
+        <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <Badge variant="secondary" className="mb-6 animate-pulse">
-              <Sparkles className="w-4 h-4 mr-2" />
+            <Badge variant="secondary" className="mb-6">
               💳 Smart Bill Payments in NPR
             </Badge>
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6 animate-in slide-in-from-bottom duration-1000">
+            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
               Pay Bills
-              <span className="text-primary bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent"> Instantly</span>
+              <span className="text-primary"> Instantly</span>
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto animate-in slide-in-from-bottom duration-1000 delay-200">
+            <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
               Smart, secure, and instant bill payments for all your Nepal utilities and services.
             </p>
 
@@ -382,7 +377,7 @@ export default function Payments() {
                 { icon: <CheckCircle className="h-5 w-5" />, value: "24/7", label: "Available" },
                 { icon: <Star className="h-5 w-5" />, value: "4.9★", label: "User Rating" }
               ].map((stat, index) => (
-                <div key={index} className="text-center p-4 rounded-lg bg-background/50 backdrop-blur-sm border border-border/50 animate-in slide-in-from-bottom duration-1000" style={{ animationDelay: `${300 + index * 100}ms` }}>
+                <div key={index} className="text-center p-4 rounded-lg bg-background/50 backdrop-blur-sm border border-border/50">
                   <div className="flex items-center justify-center mb-2 text-primary">
                     {stat.icon}
                   </div>

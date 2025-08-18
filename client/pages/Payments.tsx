@@ -608,7 +608,7 @@ export default function Payments() {
 
                   {/* Enhanced Bill Details */}
                   {showBillDetails && electricityForm.consumerName && (
-                    <Card className="bg-gradient-to-br from-green-50 to-blue-50 border-green-200 animate-in slide-in-from-top duration-500">
+                    <Card className="bg-gradient-to-br from-green-50 to-blue-50 border-green-200">
                       <CardHeader>
                         <CardTitle className="text-lg flex items-center space-x-2">
                           <Receipt className="h-5 w-5 text-green-600" />

@@ -933,7 +933,7 @@ export default function Payments() {
                   </div>
 
                   {internetForm.provider && (
-                    <Card className="animate-in slide-in-from-top duration-500 bg-gradient-to-br from-purple-50 to-blue-50 border-purple-200">
+                    <Card className="bg-gradient-to-br from-purple-50 to-blue-50 border-purple-200">
                       <CardHeader>
                         <CardTitle className="text-lg">
                           {internetForm.provider.charAt(0).toUpperCase() + internetForm.provider.slice(1)} Bill Payment
@@ -971,7 +971,7 @@ export default function Payments() {
                         </div>
 
                         <div className="flex justify-center">
-                          <Button size="lg" className="bg-gradient-to-r from-purple-500 to-blue-600 hover:from-purple-600 hover:to-blue-700 text-white">
+                          <Button size="lg">
                             <Search className="mr-2 h-5 w-5" />
                             Look Up Bill Details
                           </Button>

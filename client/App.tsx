@@ -6,6 +6,7 @@ import Register from "./pages/Register";
 import Services from "./pages/Services";
 import Government from "./pages/Government";
 import Payments from "./pages/Payments";
+import Contact from "./pages/Contact";
 import { PlaceholderPage } from "./pages/PlaceholderPage";
 
 export default function App() {

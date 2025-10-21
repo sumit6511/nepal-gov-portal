@@ -354,23 +354,18 @@ export default function Payments() {
 
   return (
     <Layout>
-      {/* Enhanced Hero Section with Animated Background */}
-      <section className="relative bg-gradient-to-br from-primary/10 via-background to-accent/20 overflow-hidden py-16">
-        <div className="absolute inset-0 bg-grid-pattern opacity-5"></div>
-        <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-primary/20 to-transparent rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-gradient-to-tr from-accent/20 to-transparent rounded-full blur-3xl"></div>
-        
-        <div className="container mx-auto px-4 relative z-10">
+      {/* Hero Section */}
+      <section className="bg-gradient-to-br from-primary/10 via-background to-accent/20 py-16">
+        <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
-            <Badge variant="secondary" className="mb-6 animate-pulse">
-              <Sparkles className="w-4 h-4 mr-2" />
+            <Badge variant="secondary" className="mb-6">
               💳 Smart Bill Payments in NPR
             </Badge>
-            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6 animate-in slide-in-from-bottom duration-1000">
+            <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
               Pay Bills
-              <span className="text-primary bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent"> Instantly</span>
+              <span className="text-primary"> Instantly</span>
             </h1>
-            <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto animate-in slide-in-from-bottom duration-1000 delay-200">
+            <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto">
               Smart, secure, and instant bill payments for all your Nepal utilities and services.
             </p>
 
@@ -382,7 +377,7 @@ export default function Payments() {
                 { icon: <CheckCircle className="h-5 w-5" />, value: "24/7", label: "Available" },
                 { icon: <Star className="h-5 w-5" />, value: "4.9★", label: "User Rating" }
               ].map((stat, index) => (
-                <div key={index} className="text-center p-4 rounded-lg bg-background/50 backdrop-blur-sm border border-border/50 animate-in slide-in-from-bottom duration-1000" style={{ animationDelay: `${300 + index * 100}ms` }}>
+                <div key={index} className="text-center p-4 rounded-lg bg-background/50 backdrop-blur-sm border border-border/50">
                   <div className="flex items-center justify-center mb-2 text-primary">
                     {stat.icon}
                   </div>
@@ -432,23 +427,22 @@ export default function Payments() {
                 {/* Quick Actions */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   {quickPayments.map((payment, index) => (
-                    <Card 
-                      key={payment.id} 
-                      className={`group hover:shadow-xl transition-all duration-500 cursor-pointer border-2 hover:border-primary/50 bg-gradient-to-br ${payment.color} p-1 ${animateCards ? 'animate-in slide-in-from-left duration-1000' : ''}`}
-                      style={{ animationDelay: `${index * 150}ms` }}
+                    <Card
+                      key={payment.id}
+                      className={`cursor-pointer border-2 hover:border-primary/50 bg-gradient-to-br ${payment.color} p-1`}
                       onClick={() => handleQuickPayment(payment)}
                     >
                       <div className="bg-background rounded-lg p-6 h-full">
                         <CardHeader className="p-0 mb-4">
                           <div className="flex items-center justify-between">
-                            <div className={`p-3 rounded-full bg-gradient-to-br ${payment.color} text-white shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                            <div className={`p-3 rounded-full bg-gradient-to-br ${payment.color} text-white shadow-lg`}>
                               {payment.icon}
                             </div>
                             <Badge className={`${getDaysUntilDue(payment.dueDate) <= 3 ? 'bg-red-100 text-red-800' : 'bg-green-100 text-green-800'}`}>
                               {getDaysUntilDue(payment.dueDate)} days
                             </Badge>
                           </div>
-                          <CardTitle className="text-lg group-hover:text-primary transition-colors">
+                          <CardTitle className="text-lg">
                             {payment.service}
                           </CardTitle>
                           <CardDescription className="text-sm">
@@ -464,7 +458,7 @@ export default function Payments() {
                               Due: {new Date(payment.dueDate).toLocaleDateString()}
                             </span>
                           </div>
-                          <Button className="w-full group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
+                          <Button className="w-full">
                             <CreditCard className="mr-2 h-4 w-4" />
                             Pay Now
                           </Button>
@@ -576,11 +570,11 @@ export default function Payments() {
                           <CheckCircle className="absolute right-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-green-500" />
                         )}
                       </div>
-                      <Button 
+                      <Button
                         variant="outline"
                         onClick={() => handleBillLookup('electricity')}
                         disabled={!electricityForm.customerNumber || loadingBill}
-                        className="px-6 hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+                        className="px-6"
                       >
                         {loadingBill ? (
                           <RefreshCw className="h-4 w-4 animate-spin" />
@@ -591,7 +585,7 @@ export default function Payments() {
                       </Button>
                     </div>
                     {errors.electricity_customerNumber && (
-                      <p className="text-sm text-destructive flex items-center animate-in slide-in-from-left duration-300">
+                      <p className="text-sm text-destructive flex items-center">
                         <AlertCircle className="h-4 w-4 mr-1" />
                         {errors.electricity_customerNumber}
                       </p>
@@ -600,7 +594,7 @@ export default function Payments() {
 
                   {/* Loading Progress */}
                   {loadingBill && (
-                    <Card className="bg-gradient-to-r from-blue-50 to-purple-50 border-blue-200 animate-in slide-in-from-top duration-500">
+                    <Card className="bg-gradient-to-r from-blue-50 to-purple-50 border-blue-200">
                       <CardContent className="p-4">
                         <div className="flex items-center space-x-3 mb-3">
                           <RefreshCw className="h-5 w-5 text-blue-600 animate-spin" />
@@ -614,7 +608,7 @@ export default function Payments() {
 
                   {/* Enhanced Bill Details */}
                   {showBillDetails && electricityForm.consumerName && (
-                    <Card className="bg-gradient-to-br from-green-50 to-blue-50 border-green-200 animate-in slide-in-from-top duration-500">
+                    <Card className="bg-gradient-to-br from-green-50 to-blue-50 border-green-200">
                       <CardHeader>
                         <CardTitle className="text-lg flex items-center space-x-2">
                           <Receipt className="h-5 w-5 text-green-600" />
@@ -715,7 +709,7 @@ export default function Payments() {
 
                   {/* Status Messages */}
                   {paymentStatus === 'success' && (
-                    <Alert className="border-green-200 bg-green-50 animate-in slide-in-from-top duration-500">
+                    <Alert className="border-green-200 bg-green-50">
                       <CheckCircle className="h-4 w-4 text-green-600" />
                       <AlertDescription className="text-green-800">
                         <strong>Payment Successful!</strong><br />
@@ -726,7 +720,7 @@ export default function Payments() {
                   )}
 
                   {paymentStatus === 'error' && (
-                    <Alert variant="destructive" className="animate-in slide-in-from-top duration-500">
+                    <Alert variant="destructive">
                       <AlertCircle className="h-4 w-4" />
                       <AlertDescription>
                         Payment failed. Please check your details and try again, or contact support at +977-1-4200100.
@@ -734,7 +728,7 @@ export default function Payments() {
                     </Alert>
                   )}
 
-                  {/* Enhanced Payment Button */}
+                  {/* Payment Button */}
                   <div className="space-y-4">
                     {isProcessing && (
                       <Card className="bg-blue-50 border-blue-200">
@@ -751,10 +745,10 @@ export default function Payments() {
                       </Card>
                     )}
 
-                    <Button 
+                    <Button
                       onClick={() => handlePayment('electricity')}
                       disabled={isProcessing || !electricityForm.amount || !electricityForm.phoneNumber}
-                      className="w-full h-12 text-lg bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary transition-all duration-300 shadow-lg hover:shadow-xl"
+                      className="w-full h-12 text-lg"
                       size="lg"
                     >
                       {isProcessing ? (
@@ -939,7 +933,7 @@ export default function Payments() {
                   </div>
 
                   {internetForm.provider && (
-                    <Card className="animate-in slide-in-from-top duration-500 bg-gradient-to-br from-purple-50 to-blue-50 border-purple-200">
+                    <Card className="bg-gradient-to-br from-purple-50 to-blue-50 border-purple-200">
                       <CardHeader>
                         <CardTitle className="text-lg">
                           {internetForm.provider.charAt(0).toUpperCase() + internetForm.provider.slice(1)} Bill Payment
@@ -977,7 +971,7 @@ export default function Payments() {
                         </div>
 
                         <div className="flex justify-center">
-                          <Button size="lg" className="bg-gradient-to-r from-purple-500 to-blue-600 hover:from-purple-600 hover:to-blue-700 text-white">
+                          <Button size="lg">
                             <Search className="mr-2 h-5 w-5" />
                             Look Up Bill Details
                           </Button>

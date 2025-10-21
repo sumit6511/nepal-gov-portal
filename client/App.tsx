@@ -18,15 +18,7 @@ export default function App() {
         <Route path="/services" element={<Services />} />
         <Route path="/government" element={<Government />} />
         <Route path="/payments" element={<Payments />} />
-        <Route
-          path="/medical"
-          element={
-            <PlaceholderPage
-              title="Health Insurance Claims"
-              description="Submit and track your health insurance claims through Nepal's Social Security Fund (SSF) system."
-            />
-          }
-        />
+        <Route path="/medical" element={<MedicalClaims />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />

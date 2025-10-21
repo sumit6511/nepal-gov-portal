@@ -736,7 +736,7 @@ export default function MedicalClaims() {
                                     : "",
                               }))
                             }
-                            placeholder="Enter total bill amount"
+                            placeholder="  Enter total bill amount"
                             className="pl-10"
                           />
                         </div>
@@ -765,7 +765,7 @@ export default function MedicalClaims() {
                                 claimAmount: e.target.value,
                               }))
                             }
-                            placeholder="Calculated as 80% of bill"
+                            placeholder="  Calculated as 80% of bill"
                             className="pl-10"
                             disabled
                           />
